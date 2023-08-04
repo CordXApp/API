@@ -1,0 +1,40 @@
+{
+    "name": "@cordx/api",
+    "description": "Official api for cordx",
+    "version": "3.0.0",
+    "main": "src/index.js",
+
+    "scripts": {
+        "dev": "nodemon src/handlers/client/index.js",
+        "start": "node src/handlers/client/index.js"
+    },
+
+    "dependencies": {
+        "@fastify/autoload": "5.7.1",
+        "axios": "^1.4.0",
+        "chalk": "^4.1.0",
+        "dotenv": "^16.0.3",
+        "discord.js": "14.12.1",
+        "fastify": "^4.21.0",
+        "module-alias": "^2.2.2",
+        "mongoose": "^7.4.1",
+        "moment": "^2.29.2",
+        "moment-duration-format": "^2.3.2",
+        "parse-ms": "^3.0.0"
+    },
+
+    "devDependencies": {
+        "nodemon": "^2.0.20"
+    },
+
+    "_moduleAliases": {
+        "@root": ".",
+        "@base": "./src",
+        "@configs": "./src/configs",
+        "@database": "./src/database",
+        "@models": "./src/models",
+        "@handlers": "./src/handlers",
+        "@router": "./src/router",
+        "@plugins": "./src/plugins"
+    }
+}
