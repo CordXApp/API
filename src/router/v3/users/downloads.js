@@ -8,10 +8,8 @@ module.exports = async (fastify, opts) => {
 
         reply.header('Content-Type', 'application/json');
 
-        let u = request?.params?.userId;
-        let s = request?.query?.secret;
-
-        let client = request?.client;
+        let u = request.params.userId;
+        let s = request.query.secret;
 
         if (!s || s !== config.api) return reply.code(400).send({
             message: 'Invalid user secret provided',
