@@ -1,3 +1,5 @@
+const config = require('@configs/main');
+
 module.exports = async (fastify, opts) => {
 
     fastify.get('/pages/all', async (request, reply) => {
@@ -10,7 +12,7 @@ module.exports = async (fastify, opts) => {
             status: 400
         })
 
-        if (req.query.secret !== process.env.STATUS_SECRET) return reply.code(400).send({
+        if (req.query.secret !== config.status) return reply.code(400).send({
             message: 'Invalid secret provided.',
             error: true,
             status: 400
