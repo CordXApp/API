@@ -2,17 +2,17 @@ const config = require('@configs/main');
 
 module.exports = async (fastify, opts) => {
 
-    fastify.get('/pages/all', async (request, reply) => {
+    fastify.get('/pages/all/:secret', async (request, reply) => {
 
         reply.header('Content-Type', 'application/json');
 
-        if (!request.query.secret) return reply.code(400).send({
+        if (!request.params.secret) return reply.code(400).send({
             message: 'Please provide the required secret query',
             error: true,
             status: 400
         })
 
-        if (request.query.secret !== config.status) return reply.code(400).send({
+        if (request.params.secret !== config.status) return reply.code(400).send({
             message: 'Invalid secret provided.',
             error: true,
             status: 400

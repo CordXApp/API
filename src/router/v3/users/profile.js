@@ -4,12 +4,12 @@ const logs = require('@plugins/logger')
 
 module.exports = async (fastify, opts) => {
 
-    fastify.get('/profile/:userId', async (request, reply) => {
+    fastify.get('/profile/:userId/:params', async (request, reply) => {
 
         reply.header('Content-Type', 'application/json');
 
         let u = request.params.userId;
-        let s = request.query.secret;
+        let s = request.params.secret;
 
         if (!s || s !== config.api) return reply.code(400).send({
             message: 'Invalid user secret provided',
