@@ -6,21 +6,21 @@ module.exports = async (fastify, opts) => {
 
         reply.header('Content-Type', 'application/json');
 
-        return reply.code(200).json({
+        return reply.code(200).send({
             current: {
-                api: `${await sendGithubRequest({ repo: 'CordXApp/Website', branch: 'master', path: 'package.json'})}`, 
-                client: `${await sendGithubRequest({ repo: 'CordXApp/Client', branch: 'master', path: 'package.json'})}`,
-                website: `${await sendGithubRequest({ repo: 'CordXApp/Client', branch: 'master', path: 'package.json'})}`
+                api: `v${await sendGithubRequest({ repo: 'CordXApp/Website', branch: 'master', path: 'package.json'})}`, 
+                client: `v${await sendGithubRequest({ repo: 'CordXApp/Client', branch: 'master', path: 'package.json'})}`,
+                website: `v${await sendGithubRequest({ repo: 'CordXApp/Website', branch: 'master', path: 'package.json'})}`
             },
             newest: {
-                api: `${await sendGithubRequest({ repo: 'CordXApp/API', branch: 'master', path: 'package.json'})}`,
-                client: `${await sendGithubRequest({ repo: 'CordXApp/Client', branch: 'master', path: 'package.json'})}`,
-                website: `${await sendGithubRequest({ repo: 'CordXApp/Beta', branch: 'master', path: 'package.json'})}`
+                api: `v${await sendGithubRequest({ repo: 'CordXApp/API', branch: 'master', path: 'package.json'})}`,
+                client: `v${await sendGithubRequest({ repo: 'CordXApp/Client', branch: 'master', path: 'package.json'})}`,
+                website: `v${await sendGithubRequest({ repo: 'CordXApp/Nextjs', branch: 'master', path: 'package.json'})}`
             },
             stable: {
-                api: `${await sendGithubRequest({ repo: 'CordXApp/API', branch: 'master', path: 'package.json'})}`, 
-                client: `${await sendGithubRequest({ repo: 'CordXApp/Client', branch: 'master', path: 'package.json'})}`,
-                website: `${await sendGithubRequest({ repo: 'CordXApp/Website', branch: 'master', path: 'package.json'})}`
+                api: `v${await sendGithubRequest({ repo: 'CordXApp/API', branch: 'master', path: 'package.json'})}`, 
+                client: `v${await sendGithubRequest({ repo: 'CordXApp/Client', branch: 'master', path: 'package.json'})}`,
+                website: `v${await sendGithubRequest({ repo: 'CordXApp/Beta', branch: 'master', path: 'package.json'})}`
             }
         })
     })

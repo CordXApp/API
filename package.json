@@ -20,7 +20,9 @@
         "mongoose": "^7.4.1",
         "moment": "^2.29.2",
         "moment-duration-format": "^2.3.2",
-        "parse-ms": "^3.0.0"
+        "mysql": "2.18.1",
+        "parse-ms": "^3.0.0",
+        "serverless-mysql": "^1.5.5"
     },
 
     "devDependencies": {
@@ -31,6 +33,7 @@
         "@root": ".",
         "@base": "./src",
         "@configs": "./src/configs",
+        "@controllers": "./src/controllers",
         "@database": "./src/database",
         "@models": "./src/models",
         "@handlers": "./src/handlers",
