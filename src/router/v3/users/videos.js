@@ -8,8 +8,17 @@ module.exports = async (fastify, opts) => {
         reply.header('Content-Type', 'application/json');
 
         let u = request?.params?.userId;
+        let s = request?.query?.secret;
 
         let client = request?.client;
+
+        let user = await sqlQuery({ query: `SELECT * FROM users WHERE folder="${u}"`}).then((u) => u);
+
+        if (!s || s !== user[0].secret) return reply.code(400).send({
+            message: 'Invalid user secret provided',
+            error: true,
+            status: 400
+        })
 
         let videos = await sqlQuery({ query: `SELECT * FROM images WHERE userid="${u}"`})
         .then(v => v)
@@ -18,7 +27,7 @@ module.exports = async (fastify, opts) => {
         let vids = videos.filter((v) => v.filename.includes('.mp4'));
 
         return reply.code(200).send({
-            images: vids.splice(Math.floor(Math.random() * vids.length), 9)
+            videos: vids.splice(Math.floor(Math.random() * vids.length), 9)
         })
     })
 }

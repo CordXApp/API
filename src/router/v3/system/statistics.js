@@ -4,7 +4,7 @@ const logs = require('@plugins/logger')
 module.exports = async (fastify, opts) => {
 
     fastify.get('/stats', async (request, reply) => {
-
+        
         reply.header('Content-Type', 'application/json');
 
         let users = await sqlQuery({ query: `SELECT * FROM users` })
