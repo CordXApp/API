@@ -31,11 +31,9 @@ module.exports = async (fastify, opts) => {
 
 
                 const dnsComp = await dnsRes.json();
-                const dnsCompRes = await dnsComp.filter((d) => d.name === 'DNS');
+                const dnsCompRes = await dnsComp.filter((d) => d.name === 'DNS').map(d => d.children);
                 
-                return reply.code(200).send({
-                    results: dnsCompRes
-                });
+                return reply.code(200).send(dnsCompRes);
 
             case "sl":
 
@@ -61,7 +59,7 @@ module.exports = async (fastify, opts) => {
 
 
                 const slComp = await slRes.json();
-                const slCompRes = await slComp.filter((d) => d.name === 'Short Links');
+                const slCompRes = await slComp.filter((d) => d.name === 'Short Links').map(d => d.children);;
                 
                 return reply.code(200).send({
                     results: slCompRes
@@ -91,11 +89,9 @@ module.exports = async (fastify, opts) => {
 
 
                 const tpComp = await tpRes.json();
-                const tpCompRes = await tpComp.filter((d) => d.name === 'Short Links');
+                const tpCompRes = await tpComp.filter((d) => d.name === 'Third Party').map(d => d.children);
                 
-                return reply.code(200).send({
-                    results: tpCompRes
-                });
+                return reply.code(200).send(tpCompRes);
 
             case "us":
 
@@ -121,11 +117,9 @@ module.exports = async (fastify, opts) => {
 
 
                 const usComp = await usRes.json();
-                const usCompRes = await usComp.filter((d) => d.name === 'Short Links');
+                const usCompRes = await usComp.filter((d) => d.name === 'Upload Servers').map(d => d.children);
                 
-                return reply.code(200).send({
-                    results: usCompRes
-                });
+                return reply.code(200).send(usCompRes);
 
                 case "web":
 
@@ -151,13 +145,9 @@ module.exports = async (fastify, opts) => {
 
 
                 const webComp = await webRes.json();
-                const webCompRes = await webComp.filter((d) => d.name === 'Short Links');
+                const webCompRes = await webComp.filter((d) => d.name === 'Websites').map(d => d.children);
                 
-                return reply.code(200).send({
-                    results: webCompRes
-                });
-                
-                
+                return reply.code(200).send(webCompRes);
 
             default:
 
