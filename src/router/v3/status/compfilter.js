@@ -21,7 +21,7 @@ module.exports = async (fastify, opts) => {
                     status: 400
                 })
 
-                const dnsRes = await fetch('https://api.instatus.com/v2/ckq7ppm4g124913arohzh7jn9ek/components', {
+                const dnsRes = await fetch('https://api.instatus.com/v2/ckq7ppm4g124913arohzh7jn9ek/components/ckq7pvha4166661arohq6spoouc', {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${request.params.secret}`,
@@ -31,9 +31,8 @@ module.exports = async (fastify, opts) => {
 
 
                 const dnsComp = await dnsRes.json();
-                const dnsCompRes = await dnsComp.filter((d) => d.name === 'DNS').map(d => d.children);
                 
-                return reply.code(200).send(dnsCompRes);
+                return reply.code(200).send(dnsComp.children);
 
             case "sl":
 
@@ -49,7 +48,7 @@ module.exports = async (fastify, opts) => {
                     status: 400
                 })
 
-                const slRes = await fetch('https://api.instatus.com/v2/ckq7ppm4g124913arohzh7jn9ek/components', {
+                const slRes = await fetch('https://api.instatus.com/v2/ckq7ppm4g124913arohzh7jn9ek/components/cl0tf533o2439948nmy2jusdnsa', {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${request.params.secret}`,
@@ -59,11 +58,8 @@ module.exports = async (fastify, opts) => {
 
 
                 const slComp = await slRes.json();
-                const slCompRes = await slComp.filter((d) => d.name === 'Short Links').map(d => d.children);;
                 
-                return reply.code(200).send({
-                    results: slCompRes
-                });
+                return reply.code(200).send(slComp.children);
 
             case "tp":
 
@@ -79,7 +75,7 @@ module.exports = async (fastify, opts) => {
                     status: 400
                 })
 
-                const tpRes = await fetch('https://api.instatus.com/v2/ckq7ppm4g124913arohzh7jn9ek/components', {
+                const tpRes = await fetch('https://api.instatus.com/v2/ckq7ppm4g124913arohzh7jn9ek/components/clbk4161511292htn2qmn90tah', {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${request.params.secret}`,
@@ -89,9 +85,8 @@ module.exports = async (fastify, opts) => {
 
 
                 const tpComp = await tpRes.json();
-                const tpCompRes = await tpComp.filter((d) => d.name === 'Third Party').map(d => d.children);
                 
-                return reply.code(200).send(tpCompRes);
+                return reply.code(200).send(tpComp.children);
 
             case "us":
 
@@ -107,7 +102,7 @@ module.exports = async (fastify, opts) => {
                     status: 400
                 })
 
-                const usRes = await fetch('https://api.instatus.com/v2/ckq7ppm4g124913arohzh7jn9ek/components', {
+                const usRes = await fetch('https://api.instatus.com/v2/ckq7ppm4g124913arohzh7jn9ek/components/ckq7pzhr7193192aroh4lijqoec', {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${request.params.secret}`,
@@ -117,9 +112,8 @@ module.exports = async (fastify, opts) => {
 
 
                 const usComp = await usRes.json();
-                const usCompRes = await usComp.filter((d) => d.name === 'Upload Servers').map(d => d.children);
                 
-                return reply.code(200).send(usCompRes);
+                return reply.code(200).send(usComp.children);
 
                 case "web":
 
@@ -135,7 +129,7 @@ module.exports = async (fastify, opts) => {
                     status: 400
                 })
 
-                const webRes = await fetch('https://api.instatus.com/v2/ckq7ppm4g124913arohzh7jn9ek/components', {
+                const webRes = await fetch('https://api.instatus.com/v2/ckq7ppm4g124913arohzh7jn9ek/components/clbk47q6j13842i6n23qm6f0tu', {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${request.params.secret}`,
@@ -145,9 +139,8 @@ module.exports = async (fastify, opts) => {
 
 
                 const webComp = await webRes.json();
-                const webCompRes = await webComp.filter((d) => d.name === 'Websites').map(d => d.children);
                 
-                return reply.code(200).send(webCompRes);
+                return reply.code(200).send(webComp.children);
 
             default:
 
