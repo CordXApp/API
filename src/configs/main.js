@@ -1,5 +1,5 @@
 module.exports = {
-    port: 4223,
+    port: 4985,
     token: process.env.BOT_TOKEN,
     github: process.env.GIT_TOKEN,
     sql: {
