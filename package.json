@@ -1,7 +1,7 @@
 {
     "name": "@cordx/api",
     "description": "Official api for cordx",
-    "version": "3.0.0",
+    "version": "3.0.1",
     "main": "src/index.js",
 
     "scripts": {

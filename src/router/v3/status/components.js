@@ -27,6 +27,6 @@ module.exports = async (fastify, opts) => {
 
         const data = await response.json();
 
-        res.code(200).send(data);
+        reply.code(200).send(data);
     })
 }
