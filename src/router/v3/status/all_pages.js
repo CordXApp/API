@@ -21,7 +21,7 @@ module.exports = async (fastify, opts) => {
         const response = await fetch('https://api.instatus.com/v2/pages', {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${request.query.secret}`,
+                'Authorization': `Bearer ${request.params.secret}`,
                 'Content-Type': 'application/json'
             }
         });

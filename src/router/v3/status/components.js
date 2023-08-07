@@ -20,7 +20,7 @@ module.exports = async (fastify, opts) => {
         const response = await fetch('https://api.instatus.com/v2/ckq7ppm4g124913arohzh7jn9ek/components', {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${request.query.secret}`,
+                'Authorization': `Bearer ${request.params.secret}`,
                 'Content-Type': 'application/json'
             }
         });
