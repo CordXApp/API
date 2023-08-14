@@ -4,7 +4,7 @@ const logs = require('@plugins/logger')
 
 module.exports = async (fastify, opts) => {
 
-    fastify.get('/profile/:userId/:params', async (request, reply) => {
+    fastify.get('/profile/:userId/:secret', async (request, reply) => {
 
         reply.header('Content-Type', 'application/json');
 
