@@ -16,6 +16,7 @@
         "dotenv": "^16.0.3",
         "discord.js": "14.12.1",
         "fastify": "^4.21.0",
+        "got": "13.0.0",
         "module-alias": "^2.2.2",
         "mongoose": "^7.4.1",
         "moment": "^2.29.2",
@@ -38,6 +39,7 @@
         "@models": "./src/models",
         "@handlers": "./src/handlers",
         "@router": "./src/router",
-        "@plugins": "./src/plugins"
+        "@plugins": "./src/plugins",
+        "@json": "./src/json"
     }
 }

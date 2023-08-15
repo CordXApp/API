@@ -1,4 +1,4 @@
-const facts = require('@configs/facts');
+const facts = require('@json/lists/facts');
 
 module.exports.generateFact = async function () {
 
