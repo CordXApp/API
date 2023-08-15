@@ -7,6 +7,8 @@ module.exports.generateMeme = async function ({ topic }) {
     let m;
 
     if (!meme[0] || !meme) m = null;
+    else if (meme[0].data.children[0].data.over_18) m = null;
+    else if (meme[0].data.children[0].data.url.endsWith('.png' || '.gif' || '.jpeg' || '.jpg')) m = null
     else m = meme[0].data.children[0].data; 
     
     return m;
