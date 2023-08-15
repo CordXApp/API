@@ -1,10 +1,12 @@
+const { generateMeme } = require('@controllers/generateMeme');
+
 module.exports = async (fastify, opts) => {
 
     fastify.get('/memes', async (request, reply) => {
         
         reply.header('Content-Type', 'application/json');
 
-        let meme = await request.client.MemeGen({ topic: 'memes' });
+        let meme = await generateMeme({ topic: 'memes' });
 
         return reply.code(200).send({
             title: meme.title,
@@ -21,7 +23,7 @@ module.exports = async (fastify, opts) => {
 
         reply.header('Content-Type', 'application/json');
 
-        let meme = await request.client.MemeGen({ topic: 'dank' });
+        let meme = await generateMeme({ topic: 'dank' });
 
         return reply.code(200).send({
             title: meme.title,
@@ -38,7 +40,7 @@ module.exports = async (fastify, opts) => {
 
         reply.header('Content-Type', 'application/json');
 
-        let meme = await request.client.MemeGen({ topic: 'dankmemes' });
+        let meme = await generateMeme({ topic: 'dankmemes' });
 
         return reply.code(200).send({
             title: meme.title,
@@ -55,7 +57,7 @@ module.exports = async (fastify, opts) => {
 
         reply.header('Content-Type', 'application/json');
 
-        let meme = await request.client.MemeGen({ topic: 'prequelmemes' });
+        let meme = await generateMeme({ topic: 'prequelmemes' });
 
         return reply.code(200).send({
             title: meme.title,
@@ -72,7 +74,7 @@ module.exports = async (fastify, opts) => {
 
         reply.header('Content-Type', 'application/json');
 
-        let meme = await request.client.MemeGen({ topic: 'terriblefacebookmemes' });
+        let meme = await generateMeme({ topic: 'terriblefacebookmemes' });
 
         return reply.code(200).send({
             title: meme.title,
@@ -89,7 +91,7 @@ module.exports = async (fastify, opts) => {
 
         reply.header('Content-Type', 'application/json');
 
-        let meme = await request.client.MemeGen({ topic: 'wholesomememes' });
+        let meme = await generateMeme({ topic: 'wholesomememes' });
 
         return reply.code(200).send({
             title: meme.title,
@@ -106,7 +108,7 @@ module.exports = async (fastify, opts) => {
 
         reply.header('Content-Type', 'application/json');
 
-        let meme = await request.client.MemeGen({ topic: 'deepfriedmemes' });
+        let meme = await generateMeme({ topic: 'deepfriedmemes' });
 
         return reply.code(200).send({
             title: meme.title,
@@ -123,7 +125,7 @@ module.exports = async (fastify, opts) => {
 
         reply.header('Content-Type', 'application/json');
 
-        let meme = await request.client.MemeGen({ topic: 'surrealmemes' });
+        let meme = await generateMeme({ topic: 'surrealmemes' });
 
         return reply.code(200).send({
             title: meme.title,
@@ -140,7 +142,7 @@ module.exports = async (fastify, opts) => {
 
         reply.header('Content-Type', 'application/json');
 
-        let meme = await request.client.MemeGen({ topic: 'funny' });
+        let meme = await generateMeme({ topic: 'funny' });
 
         return reply.code(200).send({
             title: meme.title,
@@ -157,7 +159,7 @@ module.exports = async (fastify, opts) => {
 
         reply.header('Content-Type', 'application/json');
 
-        let meme = await request.client.MemeGen({ topic: 'lastimages' });
+        let meme = await generateMeme({ topic: 'lastimages' });
 
         return reply.code(200).send({
             title: meme.title,
@@ -174,7 +176,7 @@ module.exports = async (fastify, opts) => {
 
         reply.header('Content-Type', 'application/json');
 
-        let meme = await request.client.MemeGen({ topic: 'memeeconomy' });
+        let meme = await generateMeme({ topic: 'memeeconomy' });
 
         return reply.code(200).send({
             title: meme.title,
@@ -191,7 +193,7 @@ module.exports = async (fastify, opts) => {
 
         reply.header('Content-Type', 'application/json');
 
-        let meme = await request.client.MemeGen({ topic: 'cats' });
+        let meme = await generateMeme({ topic: 'cats' });
 
         return reply.code(200).send({
             title: meme.title,
@@ -208,7 +210,7 @@ module.exports = async (fastify, opts) => {
 
         reply.header('Content-Type', 'application/json');
 
-        let meme = await request.client.MemeGen({ topic: 'dogs' });
+        let meme = await generateMeme({ topic: 'dogs' });
 
         return reply.code(200).send({
             title: meme.title,
