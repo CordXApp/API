@@ -1,13 +1,10 @@
-const logs = require('@plugins/logger')
-const { genYoMamaJoke } = require('@controllers/genYoMamaJoke')
-
 module.exports = async (fastify, opts) => {
 
     fastify.get('/yomomma', async (request, reply) => {
         
         reply.header('Content-Type', 'application/json');
 
-        let random = await genYoMamaJoke();
+        let random = await request.client.YoMommaJoke;
 
         return reply.code(200).send({
             joke: random
