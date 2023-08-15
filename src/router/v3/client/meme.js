@@ -186,4 +186,38 @@ module.exports = async (fastify, opts) => {
             nsfw: meme.over_18
         })
     })
+
+    fastify.get('/memes/cats', async (request, reply) => {
+
+        reply.header('Content-Type', 'application/json');
+
+        let meme = await request.client.MemeGen({ topic: 'cats' });
+
+        return reply.code(200).send({
+            title: meme.title,
+            image: meme.url,
+            link: `https://reddit.com/${meme.subreddit_name_prefixed}`,
+            author: meme.author,
+            upvotes: meme.ups,
+            comments: meme.num_comments,
+            nsfw: meme.over_18
+        })
+    })
+
+    fastify.get('/memes/dogs', async (request, reply) => {
+
+        reply.header('Content-Type', 'application/json');
+
+        let meme = await request.client.MemeGen({ topic: 'dogs' });
+
+        return reply.code(200).send({
+            title: meme.title,
+            image: meme.url,
+            link: `https://reddit.com/${meme.subreddit_name_prefixed}`,
+            author: meme.author,
+            upvotes: meme.ups,
+            comments: meme.num_comments,
+            nsfw: meme.over_18
+        })
+    })
 }
