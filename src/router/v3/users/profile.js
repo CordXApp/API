@@ -17,6 +17,9 @@ module.exports = async (fastify, opts) => {
             status: 400
         })
 
+        let user = await sqlQuery({ query: `SELECT * FROM users WHERE folder="${u}"`})
+        .then(u => u).catch(e => logs.send(`ERROR: ${err.stack}`, 'error'));
+
         return reply.code(200).send({
             user: user[0].userid,
             secret: user[0].secret,
