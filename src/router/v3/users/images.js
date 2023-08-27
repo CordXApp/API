@@ -86,7 +86,7 @@ module.exports = async (fastify, opts) => {
         })
 
         let bucket = await space.send(new ListObjectsCommand({ Bucket: 'cordx' }));
-        let u_bucket = await bucket.Contents.filter((u) => u.Key.startsWith(`${user}`))
+        let u_bucket = await bucket.Contents.filter((u) => u.Key.startsWith(`${user}`) && !u.Key.includes('.mp4'))
 
         if (!bucket) return reply.code(404).send({
             message: 'Bucket not found',
@@ -96,7 +96,7 @@ module.exports = async (fastify, opts) => {
 
 
         return reply.code(200).send({
-            images: u_bucket
+            images: u_bucket.splice(Math.floor(Math.random() * u_bucket.length), 9)
         })
     });
 }
