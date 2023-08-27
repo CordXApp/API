@@ -4,7 +4,7 @@ const config = require('@configs/main')
 
 module.exports = async client => {
 
-    const fastify = require('fastify')({ logger: true })
+    const fastify = require('fastify')({ logger: false })
 
     fastify.register(require('@fastify/autoload'), {
         dir: path.join(__dirname, 'router')

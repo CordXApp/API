@@ -1,30 +1,102 @@
 const { sqlQuery } = require('@controllers/sqlQuery.js');
 const config = require('@configs/main');
 const logs = require('@plugins/logger')
+const { S3, ListObjectsCommand } = require('@aws-sdk/client-s3')
 
 module.exports = async (fastify, opts) => {
 
-    fastify.get('/images/:userId/:secret', async (request, reply) => {
+    function formatSizeUnits(bytes) {
+        if (bytes >= 1073741824) {
+            bytes = (bytes / 1073741824).toFixed(2) + ' GB'
+        } else if (bytes >= 1048576) {
+            bytes = (bytes / 1048576).toFixed(2) + ' MB'
+        } else if (bytes >= 1024) {
+            bytes = (bytes / 1024).toFixed(2) + ' KB'
+        } else if (bytes > 1) {
+            bytes = bytes + ' bytes'
+        } else if (bytes == 1) {
+            bytes = bytes + ' byte'
+        } else {
+            bytes = '0 bytes'
+        }
+        return bytes
+    }
+
+    fastify.get('/:userId/stats', async (request, reply) => {
 
         reply.header('Content-Type', 'application/json');
 
-        let u = request.params.userId;
-        let s = request.params.secret;
+        let user = request.params.userId;
 
-        if (!s || s !== config.api) return reply.code(400).send({
-            message: 'Invalid user secret provided',
-            error: true,
-            status: 400
+        const space = new S3({
+            forcePathStyle: false,
+            endpoint: process.env.DoCdnLink,
+            region: 'us-east-1',
+            credentials: {
+                accessKeyId: process.env.DoKeyId,
+                secretAccessKey: process.env.DoSecret
+            }
         })
 
-        let images = await sqlQuery({ query: `SELECT * FROM images WHERE userid="${u}"`})
-        .then(i => i)
-        .catch(e => logs.send(`ERROR: ${err.stack}`, 'error'));
+        let images = await sqlQuery({ query: `SELECT * FROM images WHERE userid="${user}"`}).then(i => i);
+        let downloads = await sqlQuery({ query: `SELECT * FROM downloads WHERE user="${user}"` }).then(d => d)
 
-        let imgs = images.filter((i) => !i.filename.includes('.mp4'));
+        let png = await images.filter(v => v.filename.includes('.png'));
+        let gif = await images.filter(v => v.filename.includes('.gif'));
+        let mp4 = await images.filter(v => v.filename.includes('.mp4'));
+        let other = await images.filter(v => !v.filename.includes('.png') && !v.filename.includes('.gif') && !v.filename.includes('.mp4'));
+
+        let bucket = await space.send(new ListObjectsCommand({ Bucket: 'cordx', Key: `${user}` }));
+
+        let size;
+
+        if (bucket) size = await formatSizeUnits(bucket.Contents.length)
+        else size = '0 bytes';
 
         return reply.code(200).send({
-            images: imgs.splice(Math.floor(Math.random() * imgs.length), 9)
+            storage: {
+                used: `${size}`,
+                remains: 'unlimited',
+            },
+            files: {
+                images: images.length ? images.length : 0,
+                downloads: downloads.length ? downloads.length : 0,
+                png: png.length ? png.length : 0,
+                gif: gif.length ? gif.length : 0,
+                mp4: mp4.length ? mp4.length : 0,
+                other: other.length ? other.length : 0,
+            }
         })
-    })
+    });
+
+    fastify.get('/:userId/images/all', async (request, reply) => {
+
+        reply.header('Content-Type', 'application/json');
+
+        let user = request.params.userId;
+
+        const space = new S3({
+            forcePathStyle: false,
+            endpoint: process.env.DoCdnLink,
+            region: 'us-east-1',
+            credentials: {
+                accessKeyId: process.env.DoKeyId,
+                secretAccessKey: process.env.DoSecret
+            }
+        })
+
+        let bucket = await space.send(new ListObjectsCommand({ Bucket: 'cordx' }));
+        let u_bucket = await bucket.Contents.filter((u) => u.Key.startsWith(`${user}`))
+
+        if (!bucket) return reply.code(404).send({
+            message: 'Bucket not found',
+            status: 404 
+        })
+
+
+
+        return reply.code(200).send({
+            images: u_bucket
+        })
+    });
 }
