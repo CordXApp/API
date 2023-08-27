@@ -40,8 +40,7 @@ module.exports = async client => {
             logs.send('Server start up successful', 'ready');
         } catch (e) {
             await logs.send('Error starting server', 'error');
-
-            return fastify.log.error(e.stack);
+            return logs.send(`${e.stack}`, 'error');
         }
     }
 
