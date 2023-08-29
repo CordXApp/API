@@ -12,17 +12,20 @@ module.exports = async function (fastify) {
                     type: 'object',
                     properties: {
                         page: {
-                            name: {
-                                type: 'string',
-                                default: 'CordX',
-                                description: 'Will always be the CordX'
-                            },
-                            url: {
-                                type: 'string',
-                                default: 'https://cordx.instatus.com',
-                                description: 'Url will always be cordx.instatus.com'
-                            },
-                            status: { type: 'string' }
+                            type: 'object',
+                            properties: {
+                                name: {
+                                    type: 'string',
+                                    default: 'CordX',
+                                    description: 'Will always be the CordX'
+                                },
+                                url: {
+                                    type: 'string',
+                                    default: 'https://cordx.instatus.com',
+                                    description: 'Url will always be cordx.instatus.com'
+                                },
+                                status: { type: 'string' }
+                            }
                         }
                     }
                 }
