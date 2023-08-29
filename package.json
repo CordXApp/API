@@ -68,6 +68,10 @@
         "branches": [
             {
                 "name": "master",
+                "prerelease": false
+            },
+            {
+                "name": "alpha",
                 "prerelease": true
             }
         ]
