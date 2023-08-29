@@ -24,7 +24,7 @@ jobs:
             - name: Install dependencies
               run: npm install
             - name: Install plugins
-              run: npm install --save-dev @semantic-release/release-notes-generator @semantic-release/git @semantic-release/github @semantic-release/commit-analyzer @semantic-release/npm
+              run: npm install --save-dev @semantic-release/release-notes-generator @semantic-release/npm @semantic-release/git @semantic-release/github @semantic-release/commit-analyzer
             - name: Release
               env:
                   GH_TOKEN: ${{ secrets.GH_TOKEN }}
