@@ -2,7 +2,9 @@ name: Release
 
 on:
     push:
-        branches: [ master ]
+        branches:
+            'master',
+            'alpha'
 
 jobs:
     release:
@@ -23,8 +25,14 @@ jobs:
                   node-version: '20'
             - name: Install dependencies
               run: npm install
-            - name: Install plugins
-              run: npm install --save-dev @semantic-release/release-notes-generator @semantic-release/git @semantic-release/github @semantic-release/commit-analyzer 
+            - name: Semantic npm
+              run: npm install --save-dev @semantic-release/npm
+            - name: Semantic notes
+              run: npm install --save-dev @semantic-release/release-notes-generator
+            - name: Semantic git
+              run : npm install --save-dev @semantic-release/git @semantic-release/github
+            - name: Semantic analyze
+              run: npm install --save-dev @semantic-release/commit-analyzer 
             - name: Release
               env:
                   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
