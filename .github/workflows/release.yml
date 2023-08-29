@@ -23,7 +23,7 @@ jobs:
                   node-version: '20'
             - name: Install dependencies
               run: npm install
-            - name: Install plugins
+            - name: Development plugins
               run: npm install --save-dev @semantic-release/git
             - name: Release
               env:
