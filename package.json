@@ -1,14 +1,14 @@
 {
     "name": "cordx-api",
     "description": "Official api for cordx",
-    "version": "3.2.0",
+    "version": "3.2.1",
     "main": "src/index.js",
     "publishConfig": {
         "access": "public"
     },
     "homepage": "https://api.cordx.lol",
     "repository": {
-        "url": "https://api.cordx.lol"
+        "url": "https://github.com/CordXApp/API"
     },
     "scripts": {
         "dev": "nodemon src/handlers/client/index.js",
