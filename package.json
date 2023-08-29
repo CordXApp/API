@@ -4,6 +4,10 @@
     "version": "0.0.0",
     "main": "src/index.js",
     "private": true,
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/CordXApp/API"
+    },
     "scripts": {
         "dev": "nodemon src/handlers/client/index.js",
         "start": "node src/handlers/client/index.js",
