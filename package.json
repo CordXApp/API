@@ -41,6 +41,7 @@
         "@semantic-release/commit-analyzer": "^10.0.0",
         "@semantic-release/github": "^9.0.0",
         "@semantic-release/release-notes-generator": "^11.0.0",
+        "@semantic-release/npm": "^10.0.2",
         "eslint": "^8.45.0",
         "nodemon": "^2.0.20",
         "husky": "^8.0.3",
@@ -81,6 +82,7 @@
         "plugins": [
             "@semantic-release/commit-analyzer",
             "@semantic-release/release-notes-generator",
+            "@semantic-release/npm",
             "@semantic-release/github"
         ]
     }
