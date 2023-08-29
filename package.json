@@ -6,7 +6,6 @@
 
     "scripts": {
         "dev": "nodemon src/handlers/client/index.js",
-        "release": "npx semantic-release",
         "start": "node src/handlers/client/index.js",
         "start:husky": "husky install"
     },

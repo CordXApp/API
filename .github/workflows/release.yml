@@ -1,0 +1,21 @@
+
+# This workflow will install dependencies and publish the package
+
+name: New Release
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+      - name: "Create a semantic release"
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          CI: true
+        run: npx semantic-release
