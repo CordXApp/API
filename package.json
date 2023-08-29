@@ -1,9 +1,12 @@
 {
-    "name": "@cordx/api",
+    "name": "cordx-api",
     "description": "Official api for cordx",
     "version": "0.0.0",
     "main": "src/index.js",
     "private": true,
+    "publishConfig": {
+        "access": "restricted"
+    },
     "repository": {
         "type": "git",
         "url": "https://github.com/CordXApp/API"
@@ -43,6 +46,7 @@
         "@semantic-release/git": "^10.0.1",
         "@semantic-release/github": "^9.0.4",
         "@semantic-release/release-notes-generator": "^11.0.7",
+        "@semantic-release/npm": "^10.0.5",
         "eslint": "^8.45.0",
         "husky": "^8.0.3",
         "lint-staged": "^11.0.0",
