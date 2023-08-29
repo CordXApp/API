@@ -4,7 +4,7 @@ const { readdirSync } = require('fs')
 function ClientEvents(client) {
     readdirSync('./src/listeners/').forEach(file => {
         const event = require(`../../listeners/${file}`)
-        let eventName = file.split('.')[0]
+        const eventName = file.split('.')[0]
         logs.send(`Loading Client Event: ${eventName}`, 'event')
         client.on(eventName, event.bind(null, client))
     })

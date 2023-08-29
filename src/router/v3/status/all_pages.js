@@ -1,22 +1,24 @@
-const config = require('@configs/main');
+const config = require('@configs/main')
 
-module.exports = async (fastify, opts) => {
-
+module.exports = async fastify => {
     fastify.get('/pages/all/:secret', async (request, reply) => {
+        reply.header('Content-Type', 'application/json')
 
-        reply.header('Content-Type', 'application/json');
+        if (!request.params.secret) {
+            return reply.code(400).send({
+                message: 'Please provide the required secret query',
+                error: true,
+                status: 400
+            })
+        }
 
-        if (!request.params.secret) return reply.code(400).send({
-            message: 'Please provide the required secret query',
-            error: true,
-            status: 400
-        })
-
-        if (request.params.secret !== config.status) return reply.code(400).send({
-            message: 'Invalid secret provided.',
-            error: true,
-            status: 400
-        })
+        if (request.params.secret !== config.status) {
+            return reply.code(400).send({
+                message: 'Invalid secret provided.',
+                error: true,
+                status: 400
+            })
+        }
 
         const response = await fetch('https://api.instatus.com/v2/pages', {
             method: 'GET',
@@ -24,10 +26,10 @@ module.exports = async (fastify, opts) => {
                 'Authorization': `Bearer ${request.params.secret}`,
                 'Content-Type': 'application/json'
             }
-        });
+        })
 
-        const data = await response.json();
+        const data = await response.json()
 
-        reply.code(200).send(data);
+        reply.code(200).send(data)
     })
 }

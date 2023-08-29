@@ -1,12 +1,10 @@
-const { generate8ballRes } = require('@controllers/generate8ballRes');
+const { generate8ballRes } = require('@controllers/generate8ballRes')
 
-module.exports = async (fastify, opts) => {
+module.exports = async fastify => {
+    fastify.get('/8ball', async reply => {
+        reply.header('Content-Type', 'application/json')
 
-    fastify.get('/8ball', async (request, reply) => {
-        
-        reply.header('Content-Type', 'application/json');
-
-        let response = await generate8ballRes();
+        const response = await generate8ballRes()
 
         return reply.code(200).send({
             response: response

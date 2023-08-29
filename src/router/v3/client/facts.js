@@ -1,12 +1,10 @@
-const { generateFact } = require('@controllers/generateFact');
+const { generateFact } = require('@controllers/generateFact')
 
-module.exports = async (fastify, opts) => {
+module.exports = async fastify => {
+    fastify.get('/facts/random', async reply => {
+        reply.header('Content-Type', 'application/json')
 
-    fastify.get('/facts/random', async (request, reply) => {
-        
-        reply.header('Content-Type', 'application/json');
-
-        let randomFact = await generateFact();
+        const randomFact = await generateFact()
 
         return reply.code(200).send({
             fact: randomFact.text,

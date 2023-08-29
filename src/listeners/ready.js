@@ -1,8 +1,12 @@
-const config = require('@configs/main')
 const logs = require('@plugins/logger')
 const server = require('@base/server')
+const Redis = require('ioredis')
+// const cron = require('node-cron');
 
 module.exports = async client => {
+    const redis = new Redis(process.env.REDIS)
+
+    client._cache = redis
 
     await server(client)
 

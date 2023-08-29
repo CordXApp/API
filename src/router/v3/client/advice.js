@@ -1,12 +1,10 @@
-const { generateAdvice } = require('@controllers/generateAdvice');
+const { generateAdvice } = require('@controllers/generateAdvice')
 
-module.exports = async (fastify, opts) => {
+module.exports = async fastify => {
+    fastify.get('/advice/random', async reply => {
+        reply.header('Content-Type', 'application/json')
 
-    fastify.get('/advice/random', async (request, reply) => {
-        
-        reply.header('Content-Type', 'application/json');
-
-        let advice = await generateAdvice();
+        const advice = await generateAdvice()
 
         return reply.code(200).send({
             advice: advice

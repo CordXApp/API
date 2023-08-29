@@ -1,9 +1,6 @@
-const { sqlQuery } = require('@controllers/sqlQuery.js')
-const config = require('@configs/main')
-
 module.exports = async function (fastify) {
     fastify.route({
-        url: '/profile/:userId/:secret',
+        url: '/fetch/:userId',
         method: ['GET'],
         config: {
             rateLimit: {
@@ -39,8 +36,8 @@ module.exports = async function (fastify) {
             }
         },
         schema: {
-            summary: "Get a CordX user's Profile",
-            description: "Returns a given cordx user's cordx secret etc",
+            summary: "Get a CordX user's Discord Profile",
+            description: "Returns a given cordx user's discord id, global name etc",
             tags: ['Users'],
             params: {
                 type: 'object',
@@ -48,10 +45,6 @@ module.exports = async function (fastify) {
                     userId: {
                         type: 'string',
                         description: 'A valid discord user id/snowflake'
-                    },
-                    secret: {
-                        type: 'string',
-                        description: 'A valid cordx user secret'
                     }
                 }
             },
@@ -60,19 +53,10 @@ module.exports = async function (fastify) {
                     description: 'Successful request',
                     type: 'object',
                     properties: {
-                        user: { type: 'string' },
-                        secret: { type: 'string' },
-                        cookie: { type: 'string' },
-                        webhook: { type: 'string' }
-                    }
-                },
-                400: {
-                    description: 'Bad request',
-                    type: 'object',
-                    properties: {
-                        code: { type: 'string' },
-                        message: { type: 'string' },
-                        status: { type: 'number' }
+                        id: { type: 'string' },
+                        globalName: { type: 'string' },
+                        displayName: { type: 'string' },
+                        userName: { type: 'string' }
                     }
                 },
                 404: {
@@ -81,15 +65,6 @@ module.exports = async function (fastify) {
                     properties: {
                         code: { type: 'string' },
                         message: { type: 'string' },
-                        status: { type: 'number' }
-                    }
-                },
-                500: {
-                    description: 'Request error',
-                    type: 'object',
-                    properties: {
-                        code: { type: 'string' },
-                        errormsg: { type: 'string' },
                         status: { type: 'number' }
                     }
                 },
@@ -107,45 +82,36 @@ module.exports = async function (fastify) {
             }
         },
         preHandler: async (request, reply) => {
-            const { userId, secret } = request.params
+            const { userId } = request.params
+            const cordx_user = await request.client.users.fetch(userId)
+
+            if (!cordx_user) {
+                return reply.code(404).send({
+                    code: 'USER_NOT_FOUND',
+                    message: `Our discord client searched far and wide but was unable to locate a user with the ID: ${userId}. If needed you can use the #{/v3/users/discord/:userId} route to fetch a user using the discord api!`,
+                    status: 404
+                })
+            }
 
             if (!userId) {
                 reply.code(404).send({
                     code: 'USER_NOT_FOUND',
-                    message: `The provided user #${userId} was not found!`,
+                    message: `The provided user ${userId} was not found!`,
                     status: 404
                 })
                 return null
             }
-
-            if (!secret || secret !== config.api) {
-                reply.code(400).send({
-                    code: 'SECRET_NOT_FOUND',
-                    message: 'Please provide a valid CordX Owner Secret',
-                    status: 400
-                })
-
-                return null
-            }
         },
         handler: async (request, reply) => {
-            reply.header('Content-Type', 'application/json')
+            const user = request.params.userId
 
-            const user = await sqlQuery({ query: `SELECT * FROM users WHERE folder="${request.params.userId}"` })
-                .then(u => u)
-                .catch(e => {
-                    return reply.code(500).send({
-                        code: 'REQUEST_ERROR',
-                        errormsg: `${e.message}`,
-                        status: 500
-                    })
-                })
+            const cordx_user = await request.client.users.fetch(user)
 
             return reply.code(200).send({
-                user: user[0].userid,
-                secret: user[0].secret,
-                cookie: user[0].cookie,
-                webhook: user[0].webhook
+                id: cordx_user.id,
+                globalName: cordx_user.globalName,
+                displayName: cordx_user.displayName,
+                userName: cordx_user.username
             })
         }
     })

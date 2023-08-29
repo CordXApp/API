@@ -1,7 +1,6 @@
-const config = require('@configs/main');
+const config = require('@configs/main')
 const logs = require('@plugins/logger')
 const mysql = require('serverless-mysql')
-const util = require('util')
 
 module.exports.sqlQuery = async function ({ query }) {
     const db = mysql({
@@ -9,21 +8,17 @@ module.exports.sqlQuery = async function ({ query }) {
             host: config.sql.host,
             user: config.sql.user,
             password: config.sql.pass,
-            database: config.sql.name,
+            database: config.sql.name
         }
-    });
+    })
 
     try {
+        const res = await db.query(query)
 
-        const res = await db.query(query);
+        await db.end()
 
-        await db.end();
-
-        return res;
-    
+        return res
     } catch (err) {
-
-        return logs.send(`ERROR: ${err.stack}`, 'error');
-
+        return logs.send(`ERROR: ${err.stack}`, 'error')
     }
-};
+}

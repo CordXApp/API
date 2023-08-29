@@ -50,7 +50,7 @@ module.exports = class logs {
             }
 
             default:
-                throw new TypeError(`Logger type should be one of: "log, warn, error, debug, event or ready"`)
+                throw new TypeError('Logger type should be one of: "log, warn, error, debug, event or ready"')
         }
     }
 }

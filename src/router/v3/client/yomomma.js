@@ -1,12 +1,10 @@
-const { genYoMamaJoke } = require('@controllers/genYoMamaJoke');
+const { genYoMamaJoke } = require('@controllers/genYoMamaJoke')
 
-module.exports = async (fastify, opts) => {
+module.exports = async fastify => {
+    fastify.get('/yomomma', async reply => {
+        reply.header('Content-Type', 'application/json')
 
-    fastify.get('/yomomma', async (request, reply) => {
-        
-        reply.header('Content-Type', 'application/json');
-
-        let random = await genYoMamaJoke();
+        const random = await genYoMamaJoke()
 
         return reply.code(200).send({
             joke: random

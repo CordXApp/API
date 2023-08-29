@@ -1,9 +1,7 @@
-const jokes = require('@json/lists/yomomma');
+const jokes = require('@json/lists/yomomma')
 
 module.exports.genYoMamaJoke = async function () {
-
-    const getJoke = (index) => {
-
+    const getJoke = index => {
         const joke = jokes[index]
 
         if (joke) return joke
@@ -11,13 +9,12 @@ module.exports.genYoMamaJoke = async function () {
     }
 
     const getRandomJoke = async () => {
+        const index = Math.floor(Math.random() * jokes.length)
 
-        const index = Math.floor(Math.random() * jokes.length);
+        const joke = await getJoke(index)
 
-        const joke = await getJoke(index);
-
-        return joke;
+        return joke
     }
 
     return getRandomJoke()
-} 
+}
