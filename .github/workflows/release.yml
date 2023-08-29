@@ -1,21 +1,29 @@
-
-# This workflow will install dependencies and publish the package
-
-name: New Release
+name: Semantic Release CI
 
 on:
-  push:
-    branches: [ master ]
+    push:
+        branches: [ master ]
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          ref: ${{ github.ref }}
-      - name: "Create a semantic release"
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          CI: true
-        run: npx semantic-release
+    release:
+        name: 'Release'
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+            issues: write
+            pull-requests: write
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+              with:
+                  fetch-depth: 0
+            - name: Setup Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: '20'
+            - name: Install dependencies
+              run: npm install
+            - name: Release
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+              run: npx semantic-release

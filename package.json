@@ -62,5 +62,13 @@
             "eslint ./src --fix",
             "prettier -w ./src"
         ]
+    },
+    "release": {
+        "branches": [
+            {
+                "name": "master",
+                "prerelease": false
+            }
+        ]
     }
 }
