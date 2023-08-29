@@ -84,31 +84,38 @@ module.exports = async function (fastify) {
                     description: 'Partial/Cached content',
                     type: 'object',
                     properties: {
-                        cached: { type: 'boolean', default: true },
+                        cached: {
+                            type: 'boolean',
+                            default: true,
+                            description: 'Will always be true'
+                        },
                         expiry: {
                             type: 'number',
                             default: 1800,
-                            description: 'Time left until the cache expires (in seconds)'
+                            description: '30 minutes'
                         },
                         data: {
-                            id: { type: 'string' },
-                            username: { type: 'string' },
-                            global_name: { type: 'string' },
-                            avatar: {
-                                type: 'object',
-                                properties: {
-                                    id: { type: 'string' },
-                                    link: { type: 'string' },
-                                    is_animated: { type: 'boolean' }
-                                }
-                            },
-                            banner: {
-                                type: 'object',
-                                properties: {
-                                    id: { type: 'string' },
-                                    link: { type: 'string' },
-                                    is_animated: { type: 'boolean' },
-                                    color: { type: 'string' }
+                            type: 'object',
+                            properties: {
+                                id: { type: 'string' },
+                                username: { type: 'string' },
+                                global_name: { type: 'string' },
+                                avatar: {
+                                    type: 'object',
+                                    properties: {
+                                        id: { type: 'string' },
+                                        link: { type: 'string' },
+                                        is_animated: { type: 'boolean' }
+                                    }
+                                },
+                                banner: {
+                                    type: 'object',
+                                    properties: {
+                                        id: { type: 'string' },
+                                        link: { type: 'string' },
+                                        is_animated: { type: 'boolean' },
+                                        color: { type: 'string' }
+                                    }
                                 }
                             }
                         }
@@ -165,7 +172,7 @@ module.exports = async function (fastify) {
                 const parsed = await JSON.parse(cached)
 
                 if (cached) {
-                    reply.code(200).send(
+                    reply.code(206).send(
                         JSON.stringify({
                             cached: true,
                             expiry: 1800,
