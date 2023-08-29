@@ -3,9 +3,12 @@
     "description": "Official api for cordx",
     "version": "3.2.0",
     "main": "src/index.js",
+    "publishConfig": {
+        "access": "public"
+    },
+    "homepage": "https://api.cordx.lol",
     "repository": {
-        "type": "git",
-        "url": "https://github.com/CordXApp/API"
+        "url": "https://api.cordx.lol"
     },
     "scripts": {
         "dev": "nodemon src/handlers/client/index.js",
@@ -71,11 +74,11 @@
     "release": {
         "branches": [
             {
-                "name": "master",
+                "name": "prod",
                 "prerelease": false
             },
             {
-                "name": "alpha",
+                "name": "beta",
                 "prerelease": true
             }
         ],
