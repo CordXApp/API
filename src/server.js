@@ -14,7 +14,7 @@ module.exports = async client => {
         max: 10,
         timeWindow: 1000,
         hook: 'preHandler',
-        cache: 1000,
+        cache: 5000,
         redis: client._cache,
         continueExceeding: false,
         skipOnError: false,
