@@ -16,7 +16,7 @@ module.exports.swaggerOptions = {
         },
         host: 'api.cordx.lol',
         basePath: '/v3',
-        schemes: ['http', 'https'],
+        schemes: ['https'],
         consumes: ['application/json'],
         produces: ['application/json'],
         tags: [
