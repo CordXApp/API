@@ -1,7 +1,7 @@
 {
     "name": "@cordx/api",
     "description": "Official api for cordx",
-    "version": "3.1.1",
+    "version": "0.0.0",
     "main": "src/index.js",
     "private": true,
     "scripts": {
@@ -78,6 +78,7 @@
         "plugins": [
             "@semantic-release/commit-analyzer",
             "@semantic-release/release-notes-generator",
+            "@semantic-release/github",
             [
                 "@semantic-release/git",
                 {
