@@ -14,15 +14,27 @@ module.exports.swaggerOptions = {
             url: 'https://docs.cordx.lol',
             description: 'View our external docs'
         },
-        host: 'localhost:4985',
+        host: 'api.cordx.lol',
         basePath: '/v3',
         schemes: ['http', 'https'],
         consumes: ['application/json'],
         produces: ['application/json'],
         tags: [
             {
+                name: 'Client',
+                description: 'Client/Discord Bot related end-points'
+            },
+            {
                 name: 'Users',
                 description: 'User related end-points'
+            },
+            {
+                name: 'System',
+                description: 'System related end-points'
+            },
+            {
+                name: 'Status',
+                description: 'Status page related end-points'
             }
         ]
     },
