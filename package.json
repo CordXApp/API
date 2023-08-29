@@ -4,52 +4,48 @@
     "version": "3.1.1",
     "main": "src/index.js",
     "private": true,
-
     "scripts": {
         "dev": "nodemon src/handlers/client/index.js",
         "start": "node src/handlers/client/index.js",
         "start:husky": "husky install"
     },
-
     "dependencies": {
-        "axios": "^1.4.0",
-        "aws-sdk": "2.1445.0",
         "@aws-sdk/client-s3": "3.400.0",
         "@fastify/autoload": "5.7.1",
         "@fastify/cors": "^7.0.0",
+        "aws-sdk": "2.1445.0",
+        "axios": "^1.4.0",
         "chalk": "^4.1.0",
-        "dotenv": "^16.0.3",
         "discord.js": "14.12.1",
+        "dotenv": "^16.0.3",
         "fastify": "3.29.5",
-        "fastify-swagger": "4.12.6",
         "fastify-rate-limit": "^5.8.0",
+        "fastify-swagger": "4.12.6",
         "got": "13.0.0",
         "ioredis": "^5.0.3",
         "module-alias": "^2.2.2",
-        "mongoose": "^7.4.1",
         "moment": "^2.29.2",
         "moment-duration-format": "^2.3.2",
+        "mongoose": "^7.4.1",
         "mysql": "2.18.1",
         "node-cron": "3.0.2",
         "parse-ms": "^3.0.0",
         "serverless-mysql": "^1.5.5"
     },
-
     "devDependencies": {
         "@commitlint/cli": "^17.6.6",
         "@commitlint/config-conventional": "^16.2.4",
-        "@semantic-release/commit-analyzer": "^10.0.0",
-        "@semantic-release/github": "^9.0.0",
-        "@semantic-release/release-notes-generator": "^11.0.0",
+        "@semantic-release/commit-analyzer": "^10.0.4",
         "@semantic-release/git": "^10.0.1",
+        "@semantic-release/github": "^9.0.0",
+        "@semantic-release/release-notes-generator": "^11.0.7",
         "eslint": "^8.45.0",
-        "nodemon": "^2.0.20",
         "husky": "^8.0.3",
         "lint-staged": "^11.0.0",
-        "semantic-release": "^21.0.7",
-        "prettier": "^2.5.1"
+        "nodemon": "^2.0.20",
+        "prettier": "^2.5.1",
+        "semantic-release": "^21.0.7"
     },
-
     "_moduleAliases": {
         "@root": ".",
         "@base": "./src",
@@ -82,10 +78,15 @@
         "plugins": [
             "@semantic-release/commit-analyzer",
             "@semantic-release/release-notes-generator",
-            ["@semantic-release/git", {
-                "assets": ["package.json"],
-                "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
-              }]
+            [
+                "@semantic-release/git",
+                {
+                    "assets": [
+                        "package.json"
+                    ],
+                    "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+                }
+            ]
         ]
     }
 }
