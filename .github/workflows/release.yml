@@ -21,13 +21,25 @@ jobs:
               uses: actions/setup-node@v3
               with:
                   node-version: '20'
+
             - name: Install dependencies
               run: npm install
-            - name: Install plugins
-              run: npm install --save-dev @semantic-release/release-notes-generator @semantic-release/git @semantic-release/github @semantic-release/commit-analyzer @semantic-release/npm
+
+            - name: Release notes
+              run: npm install --save-dev @semantic-release/release-notes-generator
+
+            - name: Git cli
+              run: npm install --save-dev @semantic-release/git @semantic-release/github 
+
+              - name: Commit analyzer
+              run: npm install --save-dev @semantic-release/commit-analyzer
+
+              - name: Npm version
+              run: npm install --save-dev @semantic-release/npm
+            
             - name: Release
               env:
-                  GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+                  GH_TOKEN: ${{ secrets.GH_TOKEN }}
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
               run: npx semantic-release
