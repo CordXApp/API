@@ -1,12 +1,14 @@
 {
-    "name": "cordx-api",
-    "description": "Official api for cordx",
+    "name": "@infinitybots/cordx-api",
+    "description": "The official restful api for the cordx services",
     "version": "3.2.1",
     "main": "src/index.js",
-    "publishConfig": {
-        "access": "public"
+    "author": {
+        "name": "Infinity Development"
     },
-    "homepage": "https://api.cordx.lol",
+    "publishConfig": {
+        "access": "restricted"
+    },
     "repository": {
         "url": "https://github.com/CordXApp/API"
     },
