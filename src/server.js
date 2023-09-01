@@ -9,6 +9,10 @@ module.exports = async client => {
     const fastify = require('fastify')({ logger: false })
     fastify.register(require('fastify-swagger'), swaggerOptions)
     fastify.register(require('@fastify/cors'), corsOptions)
+    fastify.register(require('fastify-simple-form'), {
+        multipart: true,
+        urlencoded: true
+    })
     fastify.register(rateLimit, {
         global: false,
         max: 10,
