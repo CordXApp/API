@@ -51,7 +51,7 @@ module.exports = async client => {
 
     fastify.setNotFoundHandler(function (request, reply) {
         reply.code(404).send({
-            message: 'Unable to locate the provided route',
+            message: 'Unable to locate the provided route!',
             error: true,
             fatal: false,
             status: 404
