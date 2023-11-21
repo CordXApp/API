@@ -70,9 +70,9 @@ module.exports = async client => {
                 host: '0.0.0.0'
             })
 
-            logs.send('Server start up successful', 'ready')
+            logs.send('Server start up successful!', 'ready')
         } catch (e) {
-            await logs.send('Error starting server', 'error')
+            await logs.send('Error starting server!', 'error')
             return logs.send(`${e.stack}`, 'error')
         }
     }
