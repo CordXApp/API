@@ -18,7 +18,8 @@ module.exports = {
                 'vercel', 
                 'update',
                 'major',
-                'minor'
+                'minor',
+                "patch"
             ]
         ]
     }
