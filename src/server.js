@@ -51,7 +51,7 @@ module.exports = async client => {
 
     fastify.setNotFoundHandler(function (request, reply) {
         reply.code(404).send({
-            message: 'Unable to locate the provided route!',
+            message: 'Unable to locate the provided route, please check your query and try again!',
             error: true,
             fatal: false,
             status: 404
@@ -70,9 +70,9 @@ module.exports = async client => {
                 host: '0.0.0.0'
             })
 
-            logs.send('Server start up successful', 'ready')
+            logs.send('Server start up successful!', 'ready')
         } catch (e) {
-            await logs.send('Error starting server', 'error')
+            await logs.send('Error starting server!', 'error')
             return logs.send(`${e.stack}`, 'error')
         }
     }

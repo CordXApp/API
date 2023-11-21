@@ -80,43 +80,6 @@ module.exports = async function (fastify) {
                         }
                     }
                 },
-                206: {
-                    description: 'Cached/Partial Content',
-                    type: 'object',
-                    properties: {
-                        cached: {
-                            type: 'boolean',
-                            default: true,
-                            description: 'Will always be true'
-                        },
-                        expiry: {
-                            type: 'number',
-                            default: 1800,
-                            description: '30 minutes'
-                        },
-                        storage: {
-                            type: 'object',
-                            properties: {
-                                used: { type: 'number' },
-                                remains: {
-                                    type: 'string',
-                                    default: 'unlimited'
-                                }
-                            }
-                        },
-                        files: {
-                            type: 'object',
-                            properties: {
-                                images: { type: 'number' },
-                                downloads: { type: 'number' },
-                                png: { type: 'number' },
-                                gif: { type: 'number' },
-                                mp4: { type: 'number' },
-                                other: { type: 'number' }
-                            }
-                        }
-                    }
-                },
                 404: {
                     description: 'User not found',
                     type: 'object',
@@ -183,53 +146,22 @@ module.exports = async function (fastify) {
             if (bucket) size = await formatSizeUnits({ bytes: bucket.Contents.length })
             else size = '0 bytes'
 
-            const cached = await request.client._cache.get(`stats_${userId}`)
-            const parsed = await JSON.parse(cached)
-
-            if (cached) {
-                return reply.code(206).send(
-                    JSON.stringify({
-                        cached: true,
-                        expires: 1800,
-                        data: {
-                            storage: {
-                                used: parsed.storage.used,
-                                remains: parsed.storage.remains
-                            },
-                            files: {
-                                images: parsed.files.images,
-                                downloads: parsed.files.downloads,
-                                png: parsed.files.png,
-                                gif: parsed.files.gif,
-                                mp4: parsed.files.mp4,
-                                other: parsed.files.other
-                            }
-                        }
-                    })
-                )
-            } else {
-                const data = {
-                    storage: {
-                        used: `${size}`,
-                        remains: 'unlimited'
-                    },
-                    files: {
-                        images: images.length ? images.length : 0,
-                        downloads: downloads.length ? downloads.length : 0,
-                        png: png.length ? png.length : 0,
-                        gif: gif.length ? gif.length : 0,
-                        mp4: mp4.length ? mp4.length : 0,
-                        other: other.length ? other.length : 0
-                    }
+            const data = {
+                storage: {
+                    used: `${size}`,
+                    remains: 'unlimited'
+                },
+                files: {
+                    images: images.length ? images.length : 0,
+                    downloads: downloads.length ? downloads.length : 0,
+                    png: png.length ? png.length : 0,
+                    gif: gif.length ? gif.length : 0,
+                    mp4: mp4.length ? mp4.length : 0,
+                    other: other.length ? other.length : 0
                 }
-
-                await request.client._cache
-                    .set(`stats_${userId}`, JSON.stringify(data), 'EX', 1800)
-                    .then(() => console.log(`User: ${userId} stats cached for 30 minutes`))
-                    .catch(e => console.error(`Error caching stats for ${userId} | Error: ${e.stack}`))
-
-                return reply.code(200).send(JSON.stringify(data))
             }
+
+            return reply.code(200).send(JSON.stringify(data))
         }
     })
 }
