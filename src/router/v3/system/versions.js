@@ -109,7 +109,7 @@ module.exports = async function (fastify) {
                 newest: {
                     api: `v${await sendGithubRequest({
                         repo: 'CordXApp/API',
-                        branch: 'master',
+                        branch: 'beta',
                         path: 'package.json'
                     })}`,
                     client: `v${await sendGithubRequest({
@@ -126,7 +126,7 @@ module.exports = async function (fastify) {
                 stable: {
                     api: `v${await sendGithubRequest({
                         repo: 'CordXApp/API',
-                        branch: 'master',
+                        branch: 'prod',
                         path: 'package.json'
                     })}`,
                     client: `v${await sendGithubRequest({
