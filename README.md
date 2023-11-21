@@ -1,5 +1,5 @@
-# CordX API
-Official API for the CordX Website
+# CordX API!
+Official restufl API for the CordX Website
 
 [![Semantic Release CI](https://github.com/CordXApp/API/actions/workflows/release.yml/badge.svg?branch=master)](https://github.com/CordXApp/API/actions/workflows/release.yml)
 

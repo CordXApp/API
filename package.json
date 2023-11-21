@@ -1,10 +1,15 @@
 {
-    "name": "cordx-api",
-    "description": "Official api for cordx",
-    "version": "3.2.1",
+    "name": "@infinitybots/cordx-api",
+    "description": "The official restful api for the cordx services",
+    "version": "4.0.1",
     "main": "src/index.js",
+    "author": {
+        "name": "Infinity Development"
+    },
+    "publishConfig": {
+        "access": "restricted"
+    },
     "repository": {
-        "type": "git",
         "url": "https://github.com/CordXApp/API"
     },
     "scripts": {
@@ -14,7 +19,9 @@
     },
     "dependencies": {
         "@aws-sdk/client-s3": "3.400.0",
+        "@fastify/auth": "^2.0.0",
         "@fastify/autoload": "5.7.1",
+        "@fastify/bearer-auth": "^7.0.0",
         "@fastify/cors": "^7.0.0",
         "aws-sdk": "2.1445.0",
         "axios": "^1.4.0",
@@ -23,6 +30,7 @@
         "dotenv": "^16.0.3",
         "fastify": "3.29.5",
         "fastify-rate-limit": "^5.8.0",
+        "fastify-simple-form": "1.0.6",
         "fastify-swagger": "4.12.6",
         "got": "13.0.0",
         "ioredis": "^5.0.3",
@@ -71,11 +79,11 @@
     "release": {
         "branches": [
             {
-                "name": "master",
+                "name": "prod",
                 "prerelease": false
             },
             {
-                "name": "alpha",
+                "name": "beta",
                 "prerelease": true
             }
         ],
