@@ -85,7 +85,7 @@ module.exports = async function (fastify) {
                 }
             }
         },
-        handler: async reply => {
+        handler: async (request, reply) => {
             reply.header('Content-Type', 'application/json')
 
             const output = {

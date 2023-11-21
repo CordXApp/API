@@ -59,7 +59,7 @@ module.exports = async client => {
     })
 
     fastify.ready(err => {
-        if (err) throw err
+        if (err) console.log(err.stack)
         fastify.swagger()
     })
 
