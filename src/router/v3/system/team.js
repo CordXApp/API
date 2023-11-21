@@ -8,7 +8,7 @@ module.exports = async function (fastify) {
             tags: ['System'],
             response: {
                 200: {
-                    description: 'Successful request',
+                    description: 'Successful request!',
                     type: 'object',
                     properties: {
                         staff: { type: 'array' }

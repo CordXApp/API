@@ -10,7 +10,7 @@ module.exports = async client => {
 
     await server(client)
 
-    logs.send('Client is online and listening to the database and server!', 'ready')
+    logs.send('Client is online and listening to the server!', 'ready')
 
     redis.on('ready', () => {
         logs.send('redis client is online and ready', 'ready')
