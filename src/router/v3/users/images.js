@@ -110,7 +110,7 @@ module.exports = async function (fastify) {
                 }
             })
 
-            const bucket = await space.send(new ListObjectsCommand({ Bucket: 'cordx' }))
+            const bucket = await space.send(new ListObjectsCommand({ Bucket: 'cordx-bucket' }))
             const u_bucket = await bucket.Contents.filter(u => u.Key.startsWith(`${userId}`) && !u.Key.includes('.mp4'))
 
             if (!bucket) {

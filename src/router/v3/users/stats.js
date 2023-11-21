@@ -139,7 +139,7 @@ module.exports = async function (fastify) {
                 v => !v.filename.includes('.png') && !v.filename.includes('.gif') && !v.filename.includes('.mp4')
             )
 
-            const bucket = await space.send(new ListObjectsCommand({ Bucket: 'cordx', Key: `${userId}` }))
+            const bucket = await space.send(new ListObjectsCommand({ Bucket: 'cordx-bucket', Key: `${userId}` }))
 
             let size
 
