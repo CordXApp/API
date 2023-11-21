@@ -3,7 +3,7 @@ module.exports = async function (fastify) {
         url: '/team',
         method: ['GET'],
         schema: {
-            summary: 'View a list of our team members',
+            summary: 'View a list of our team members!',
             description: 'Returns an object of staff members and an object of developers',
             tags: ['System'],
             response: {
