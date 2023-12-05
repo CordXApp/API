@@ -6,7 +6,6 @@ export const Options = {
     hideUntagged: true,
     addModels: true,
     openapi: '3.0.2',
-    theme: 'material',
     swagger: {
 
         info: {
