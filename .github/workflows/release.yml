@@ -1,0 +1,35 @@
+name: Release
+
+on:
+    push:
+        branches: 
+            - 'prod'
+            - 'beta'
+
+jobs:
+    release:
+        name: 'Release'
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+            issues: write
+            pull-requests: write
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+              with:
+                  fetch-depth: 0
+            - name: Setup Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: '20'
+            - name: Install dependencies
+              run: npm install
+            - name: Development plugins
+              run: npm install --save-dev @semantic-release/git
+            - name: Release
+              env:
+                  GH_TOKEN: ${{ secrets.GH_TOKEN }}
+                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+              run: npx semantic-release
