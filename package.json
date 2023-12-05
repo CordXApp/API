@@ -1,5 +1,5 @@
 {
-  "name": "@infinitybots/cordx-api",
+  "name": "@cordxapp/api",
   "version": "4.1.1",
   "description": "The official restful api for the cordx services",
   "main": "./src/index.ts",
