@@ -4,6 +4,13 @@ const env: any = {
     DOMAIN: 'https://api.cordx.lol',
     SECRET: process.env.API_SECRET
   },
+  BUCKETS: {
+    NAME: process.env.BucketName,
+    SECRET: process.env.DoSecret,
+    CDNLINK: process.env.DoCdnLink,
+    SHORTLINK: process.env.DoShortLink,
+    KEYID: process.env.DoKeyId
+  },
   DISCORD: {
     API_KEY: process.env.DISCORD_API_KEY,
     API_URL: 'https://discord.com/api/v9/',
@@ -28,7 +35,13 @@ const env: any = {
       staff: '1138246343412953218',
       developer: '871275407134040064'
     },
-  }
+  },
+  STATUS: {
+    SECRET: process.env.STATUS_SECRET,
+    MONITOR: process.env.STATUS_MONITOR,
+    KEY: process.env.STATUS_KEY,
+    UR: process.env.UPTIME_ROBOT
+  },
 };
 
 export default env;
