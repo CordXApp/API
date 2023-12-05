@@ -1,6 +1,6 @@
 {
   "name": "@cordxapp/api",
-  "version": "4.1.1",
+  "version": "1.0.0-beta.3",
   "description": "The official restful api for the cordx services",
   "main": "./src/index.ts",
   "directories": {
@@ -10,7 +10,6 @@
     "build": "tsc",
     "dev": "nodemon --exec npx ts-node ./src/clients/discord.client.ts",
     "start": "npx ts-node ./src/clients/discord.client.ts",
-    "test": "NODE_ENV=test jest --coverage",
     "test": "npm run test -- --watchAll"
   },
   "keywords": [
@@ -32,19 +31,20 @@
     "@fastify/rate-limit": "6.0.1",
     "axios": "^1.4.0",
     "boom": "^7.3.0",
-    "dotenv": "^8.2.0",
     "discord.js": "^14.12.1",
+    "dotenv": "^8.2.0",
     "fastify": "^2.15.3",
-    "fastify-swagger": "^2.5.0",
     "fastify-cors": "^3.0.3",
     "fastify-oas": "^2.7.0",
+    "fastify-swagger": "^2.5.0",
     "mongoose": "^8.0.2",
     "nodemon": "^3.0.2",
     "server-health": "^5.2.0"
   },
   "devDependencies": {
-    "@cordxapp/request": "0.2.0",
     "@cordxapp/pastes": "0.2.0",
+    "@cordxapp/request": "0.2.0",
+    "@semantic-release/git": "^10.0.1",
     "@types/boom": "^7.3.0",
     "@types/node": "^20.10.2",
     "@typescript-eslint/eslint-plugin": "^2.24.0",
