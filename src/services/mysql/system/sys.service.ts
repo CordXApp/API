@@ -2,6 +2,9 @@ import boom from "boom";
 import sqlQuery from '../../../clients/mysql.client';
 import { WebsiteStats } from '../../../@types/sys'
 
+/**
+ * GENERATE WEBSITE STATS FROM DATABASE
+ */
 export const getWebsiteStats = async (): Promise<any> => {
 
     try {
