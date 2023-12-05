@@ -13,6 +13,9 @@ export async function server({ client }) {
 
     const app = fastify({ logger: true });
 
+    /**
+     * SERVER HEALTH CHECK
+     */
     serverHealth.exposeHealthEndpoint(app, '/health', 'fastify');
 
     serverHealth.addConnectionCheck('mongoose', async () => {
