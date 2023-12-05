@@ -16,6 +16,18 @@ async function getProjectVersion({ repo, branch }) {
     return resp.version ? resp.version : null;
 }
 
-const github = { getProjectVersion }
+async function getProjectSize({ repo, branch }) {
+
+    if (!repo) throw new Error("Please provide a repository name.");
+    if (!branch) throw new Error("Please provide a branch name.");
+
+    const url = `https://api.github.com/repos/${repo}/${branch}`;
+
+    const resp = await axios.get(url, { headers: { Authorization: `token ${env.GITHUB.TOKEN}` } }).then((res) => res.data);
+
+    return resp.size ? resp.size : null;
+}
+
+const github = { getProjectVersion, getProjectSize }
 
 export default github;
