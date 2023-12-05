@@ -1,6 +1,6 @@
 {
   "name": "@infinitybots/cordx-api",
-  "version": "1.0.0-beta.1",
+  "version": "4.1.1",
   "description": "The official restful api for the cordx services",
   "main": "./src/index.ts",
   "directories": {
