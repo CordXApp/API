@@ -19,7 +19,11 @@ module.exports = {
                 'update',
                 'major',
                 'minor',
-                "patch"
+                "patch",
+                "build",
+                "release",
+                "run",
+                "add"
             ]
         ]
     }
