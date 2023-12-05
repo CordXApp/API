@@ -66,8 +66,12 @@
   "release": {
     "branches": [
       {
-        "name": "beta",
+        "name": "prod",
         "prerelease": false
+      },
+      {
+        "name": "beta",
+        "prerelease": true
       }
     ],
     "plugins": [
