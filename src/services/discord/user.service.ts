@@ -1,7 +1,7 @@
 import boom from "boom";
 import env from "../../configs/server.cfg";
 import { DiscordUser } from "../../@types/users";
-import snowflakeToTimestamp from "../../functions/convertSnowflake";
+import snowflakeToTimestamp from "../../utils/convertSnowflake";
 
 export const fetchV3DiscordUser = async ({ id }): Promise<DiscordUser> => {
 
