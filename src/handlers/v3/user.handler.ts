@@ -20,7 +20,7 @@ export const getDiscordUser = async (
         statusCode: 500,
         error: "Internal Server Error",
         message: "Something went wrong while trying to fetch the user from the discord api.",
-        errorMsg: test.statusText ? test.statusText : "No error message provided."
+        errorMsg: "No error message provided."
 
     })
 
