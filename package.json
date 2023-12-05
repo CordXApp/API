@@ -1,6 +1,6 @@
 {
   "name": "@cordxapp/api",
-  "version": "1.0.0-beta.6",
+  "version": "1.0.0",
   "description": "The official restful api for the cordx services",
   "main": "./src/index.ts",
   "directories": {
