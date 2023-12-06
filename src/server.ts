@@ -30,6 +30,8 @@ export async function server({ client }) {
 
         //@ts-expect-error
         req.client = client;
+        //@ts-expect-error
+        req.server = app;
 
         res.header('Access-Control-Allow-Origin', '*')
         res.header('Access-Control-Allow-Headers', '*')

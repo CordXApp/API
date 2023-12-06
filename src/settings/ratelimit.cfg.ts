@@ -5,9 +5,11 @@ export const redis = new Redis(env.DATABASES.REDIS);
 
 export const RatelimitOptions = {
     max: 10,
+    ban: 10,
     global: false,
     timeWindow: 1000,
     hook: 'preHandler',
+    nameSpace: 'cordx-ratelimit',
     cache: 5000,
     redis: redis,
     continueExceeding: false,
