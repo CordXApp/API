@@ -1,37 +1,28 @@
 require("dotenv").config();
 
 import fastify from "fastify";
-import env from "./configs/server.cfg";
+import env from "./settings/server.cfg";
 import dbConnect from "./clients/mongo.client";
-import { RatelimitOptions } from "./configs/ratelimit.cfg";
-import { Options } from "./configs/swagger.cfg";
-import serverHealth from 'server-health'
-import { redis } from './configs/ratelimit.cfg'
 import routes from "./routes";
+
+/**
+ * PLUGIN CONFIGS
+ */
+import { Options } from "./settings/swagger.cfg";
+import { RatelimitOptions } from "./settings/ratelimit.cfg";
+import { CorsOptions } from "./settings/cors.cfg";
 
 export async function server({ client }) {
 
     const app = fastify({ logger: true });
 
-    /**
-     * SERVER HEALTH CHECK
-     */
-    serverHealth.exposeHealthEndpoint(app, '/health', 'fastify');
-
-    serverHealth.addConnectionCheck('mongoose', async () => {
-        let connection = await dbConnect();
-        if (connection) return true;
-        else return false;
-    })
-
-    serverHealth.addConnectionCheck('redis', async () => {
-        let connection = await redis.ping();
-        if (connection) return true;
-        else return false;
-    })
-
     app.register(require('fastify-oas'), Options);
+    app.register(require('@fastify/cors'), CorsOptions);
     app.register(require('@fastify/rate-limit'), RatelimitOptions);
+    app.register(require('fastify-simple-form'), {
+        multipart: env.FORMAL.MULTI,
+        urlencoded: env.FORMAL.ENCODED
+    });
 
     routes.forEach(r => app.route(r));
 

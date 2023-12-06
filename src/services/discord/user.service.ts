@@ -1,5 +1,5 @@
 import boom from "boom";
-import env from "../../configs/server.cfg";
+import env from "../../settings/server.cfg";
 import { DiscordUser } from "../../@types/users";
 import snowflakeToTimestamp from "../../utils/convertSnowflake";
 

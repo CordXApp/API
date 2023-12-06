@@ -1,5 +1,5 @@
 import boom from "boom";
-import github from '../../plugins/github/index';
+import github from '../../middleware/github/index';
 
 export const fetchProjectVersions = async (): Promise<any> => {
     try {

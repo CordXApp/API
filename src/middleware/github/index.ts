@@ -2,7 +2,7 @@
  * SIMPLE VERSION CHECKER USING THE GITHUB API AND PACKAGE.JSON
  */
 import axios from 'axios';
-import env from '../../configs/server.cfg';
+import env from '../../settings/server.cfg';
 
 async function getProjectVersion({ repo, branch }) {
 

@@ -1,4 +1,4 @@
-import env from "../configs/server.cfg";
+import env from "../settings/server.cfg";
 import mysql from 'serverless-mysql';
 
 async function sqlQuery(query: string, values: any) {
