@@ -3,6 +3,7 @@ require("dotenv").config();
 import fastify from "fastify";
 import env from "./settings/server.cfg";
 import dbConnect from "./clients/mongo.client";
+import simpleForm from "fastify-simple-form";
 import routes from "./routes";
 
 /**
@@ -19,7 +20,7 @@ export async function server({ client }) {
     app.register(require('fastify-oas'), Options);
     app.register(require('@fastify/cors'), CorsOptions);
     app.register(require('@fastify/rate-limit'), RatelimitOptions);
-    app.register(require('fastify-simple-form'), {
+    app.register(simpleForm, {
         multipart: env.FORMAL.MULTI,
         urlencoded: env.FORMAL.ENCODED
     });
@@ -30,8 +31,6 @@ export async function server({ client }) {
 
         //@ts-expect-error
         req.client = client;
-        //@ts-expect-error
-        req.server = app;
 
         res.header('Access-Control-Allow-Origin', '*')
         res.header('Access-Control-Allow-Headers', '*')

@@ -26,3 +26,13 @@ export type Ratelimit = {
         onBanReach: any;
     }
 }
+
+export type Bucket = {
+    forcePathStyle: boolean;
+    endpoint: string;
+    region: string;
+    credentials: {
+        accessKeyId: string;
+        secretAccessKey: string;
+    }
+}

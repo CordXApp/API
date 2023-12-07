@@ -100,3 +100,14 @@ export const fetchDiscordClientUser = async ({ req }) => {
 
     return { staff: staff_array };
 }
+
+export const fetchUserStats = async ({ request, reply }) => {
+
+    reply.header('Content-Type', 'application/json');
+
+    const { user } = request.params;
+
+    
+
+
+}
