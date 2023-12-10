@@ -3,10 +3,9 @@
     "README.md"
   ],
   "imageSize": 100,
-  "commit": false,
+  "commit": true,
   "contributors": [
     {
-      "login": "TheRealToxicDev",
       "name": "Toxic Dev",
       "avatar_url": "https://avatars.githubusercontent.com/u/59587139?v=4",
       "profile": "https://github.com/TheRealToxicDev",
