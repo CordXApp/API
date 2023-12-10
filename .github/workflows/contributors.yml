@@ -1,0 +1,34 @@
+name: Update contributors table
+on:
+  push:
+    paths:
+      - ".all-contributorsrc"
+      - ".github/workflows/contributors.yml"
+
+jobs:
+  contributors:
+    name: Update contributors
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.x
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Update README
+        run: npm run contributors:generate
+
+      - name: Commit README changes
+        uses: EndBug/add-and-commit@v4
+        with:
+          message: "[cli] yay: update contributors table"
+          add: "./README.md"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
