@@ -1,5 +1,5 @@
 # CordX API
-Official restufl API for the CordX Website
+Official restful api for the CordX Services.
 
 [![Semantic Release CI](https://github.com/CordXApp/API/actions/workflows/release.yml/badge.svg?branch=master)](https://github.com/CordXApp/API/actions/workflows/release.yml)
 
@@ -32,9 +32,3 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
-
----
-
-
-## Credits
-- © 2023 CordX - All rights reserved
