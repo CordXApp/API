@@ -18,7 +18,7 @@
     "CordX",
     "ShareX"
   ],
-  "license": "UNLICENSED",
+  "license": "LGPL-3.0-only",
   "author": {
     "name": "Infinity Development",
     "url": "https://api.cordx.lol"
