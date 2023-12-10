@@ -1,5 +1,5 @@
 import boom from "boom";
-import env from "../../configs/server.cfg";
+import env from "../../settings/server.cfg";
 import { DiscordUser } from "../../@types/users";
 import snowflakeToTimestamp from "../../utils/convertSnowflake";
 
@@ -99,4 +99,15 @@ export const fetchDiscordClientUser = async ({ req }) => {
     if (!staff || staff.length <= 1) staff = null;
 
     return { staff: staff_array };
+}
+
+export const fetchUserStats = async ({ request, reply }) => {
+
+    reply.header('Content-Type', 'application/json');
+
+    const { user } = request.params;
+
+    
+
+
 }

@@ -3,7 +3,8 @@
     "README.md"
   ],
   "imageSize": 100,
-  "commit": false,
+  "commit": true,
+  "badgeTemplate": "[![All Contributors](https://img.shields.io/github/all-contributors/CordXApp/API?color=ee8449&style=flat-square)](#contributors)",
   "contributors": [
     {
       "login": "TheRealToxicDev",
@@ -13,6 +14,17 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "TyDoesDev",
+      "name": "Tyler H",
+      "avatar_url": "https://avatars.githubusercontent.com/u/140351954?v=4",
+      "profile": "https://tydoesdev.me",
+      "contributions": [
+        "infra",
+        "test",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
@@ -20,5 +32,7 @@
   "projectOwner": "CordXApp",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": true
+  "skipCi": true,
+  "commitType": "docs",
+  "commitConvention": "angular"
 }

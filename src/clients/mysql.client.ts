@@ -1,7 +1,7 @@
-import env from "../configs/server.cfg";
+import env from "../settings/server.cfg";
 import mysql from 'serverless-mysql';
 
-async function sqlQuery(query: string, values: any) {
+async function sqlQuery(query: any, values?: any) {
 
     const db = mysql({
         config: {
