@@ -8,6 +8,8 @@
   },
   "scripts": {
     "build": "tsc",
+    "contributors:add": "all-contributors add",
+    "contributors:generate": "all-contributors generate",
     "dev": "nodemon --exec npx ts-node ./src/clients/discord.client.ts",
     "start": "npx ts-node ./src/clients/discord.client.ts",
     "test": "npm run test -- --watchAll"
