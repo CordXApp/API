@@ -21,7 +21,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tbody>
     <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/TheRealToxicDev"><img src="https://avatars.githubusercontent.com/u/59587139?v=4?s=100" width="100px;" alt="Toxic Dev"/><br /><sub><b>Toxic Dev</b></sub></a><br /><a href="https://github.com/CordXApp/API/commits?author=" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/TheRealToxicDev"><img src="https://avatars.githubusercontent.com/u/59587139?v=4?s=100" width="100px;" alt="Toxic Dev"/><br /><sub><b>Toxic Dev</b></sub></a><br /><a href="https://github.com/CordXApp/API/commits?author=TheRealToxicDev" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/TyDoesDev"><img src="https://avatars.githubusercontent.com/u/140351954?v=4?s=100" width="100px;" alt="Tyler H"/><br /><sub><b>Tyler H</b></sub></a><br /><a href="https://github.com/CordXApp/API/commits?author=" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
