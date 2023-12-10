@@ -25,6 +25,10 @@ const env: any = {
       DB: process.env.SQL_NAME
     }
   },
+  FORMAL: {
+    MULTI: true,
+    ENCODED: true
+  },
   GITHUB: {
     TOKEN: process.env.GIT_TOKEN
   },
