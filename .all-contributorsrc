@@ -15,10 +15,13 @@
       ]
     },
     {
+      "login": "TyDoesDev",
       "name": "Tyler H",
       "avatar_url": "https://avatars.githubusercontent.com/u/140351954?v=4",
-      "profile": "https://github.com/TyDoesDev",
+      "profile": "https://tydoesdev.me",
       "contributions": [
+        "infra",
+        "test",
         "code"
       ]
     }
@@ -28,5 +31,7 @@
   "projectOwner": "CordXApp",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": true
+  "skipCi": true,
+  "commitType": "docs",
+  "commitConvention": "angular"
 }
