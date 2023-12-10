@@ -1,5 +1,5 @@
 import mongo from 'mongoose';
-import env from '../configs/server.cfg';
+import env from '../settings/server.cfg';
 
 mongo.set('strictQuery', false);
 

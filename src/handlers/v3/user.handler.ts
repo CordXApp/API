@@ -1,5 +1,5 @@
-import { ServerResponse } from "http";
-import env from '../../configs/server.cfg';
+import { ServerResponse, get } from "http";
+import env from '../../settings/server.cfg';
 import { FastifyReply, FastifyRequest } from "fastify";
 
 export const getDiscordUser = async (
@@ -37,6 +37,20 @@ export const getDiscordUser = async (
     });
 
     if (!userId) return reply.code(400).send({
+        statusCode: 400,
+        error: "Bad request",
+        message: "You must provide a valid user id/snowflake."
+    });
+};
+
+export const getUserBuckets = async (
+    req: FastifyRequest,
+    reply: FastifyReply<ServerResponse>
+) => {
+
+    const user = req.params.userId;
+
+    if (!user) return reply.code(400).send({
         statusCode: 400,
         error: "Bad request",
         message: "You must provide a valid user id/snowflake."

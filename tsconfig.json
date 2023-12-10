@@ -24,11 +24,17 @@
       "root/*": [
         "src/*"
       ],
+      "clients": [
+        "src/clients/*"
+      ],
       "configs/*": [
-        "src/configs/*"
+        "src/settings/*"
       ],
       "controllers/*": [
         "src/controllers/*"
+      ],
+      "routes": [
+        "src/routes/*"
       ],
       "services/*": [
         "src/services/*"

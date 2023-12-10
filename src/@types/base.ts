@@ -18,9 +18,21 @@ export type Swagger = {
 export type Ratelimit = {
     rateLimit: {
         max: number;
+        ban: number;
         timeWindow: number;
         errorResponseHandler: any;
         onExceeding: any;
         onExceeded: any;
+        onBanReach: any;
+    }
+}
+
+export type Bucket = {
+    forcePathStyle: boolean;
+    endpoint: string;
+    region: string;
+    credentials: {
+        accessKeyId: string;
+        secretAccessKey: string;
     }
 }
