@@ -17,10 +17,8 @@ export type DiscordUser = {
      accent_color?: ColorData['accent_color'];
      banner_color?: ColorData['banner_color'];
      created_at?: any;
-     avatar?: string;
-     banner?: string;
-     avatar_info: AvatarData;
-     banner_info: BannerData;
+     avatar?: AvatarData;
+     banner?: BannerData;
 }
 
 export type AvatarDecorationData = {
@@ -29,21 +27,21 @@ export type AvatarDecorationData = {
 }
 
 export type AvatarData = {
-     hash: DiscordUser['avatar'];
-     url: string;
-     animated: any;
+     id: DiscordUser['avatar'];
+     link: string;
+     is_animated: any;
 }
 
 export type BannerData = {
-     hash: DiscordUser['banner'];
-     url: string;
+     id: DiscordUser['banner'];
+     link: string;
      color: number | null;
-     animated: any;
+     is_animated: any;
 }
 
 export type ColorData = {
-     accent_color: number | null;
-     banner_color: number | null;
+     accent_color: number | any;
+     banner_color: number | any;
 }
 
 export type UserStats = {

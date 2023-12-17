@@ -48,6 +48,7 @@
     "server-health": "^5.2.0"
   },
   "devDependencies": {
+    "@cordxapp/instatus": "0.2.0",
     "@cordxapp/pastes": "0.2.0",
     "@cordxapp/request": "0.2.0",
     "@semantic-release/git": "^10.0.1",

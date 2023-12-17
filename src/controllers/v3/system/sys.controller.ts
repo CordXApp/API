@@ -1,21 +1,19 @@
 import { ServerResponse } from "http";
 import { FastifyReply, FastifyRequest } from "fastify";
-import { getWebsiteStats } from '../../../services/mysql/system/sys.service';
-import { fetchProjectVersions } from '../../../services/github/version.service';
-import { fetchDiscordClientUser } from '../../../services/discord/user.service';
-import * as Typings from '../../../@types/sys'
+import v3Services from "../../../services/v3/base.service";
+import * as Typings from '../../../@types/v3/sys'
 
 export const getWebStats = async (
     req: FastifyRequest,
     reply: FastifyReply<ServerResponse>
-): Promise<Typings.WebsiteStats> => await getWebsiteStats();
+): Promise<Typings.WebsiteStats> => await v3Services.getWebsiteStats();
 
 export const getProjectVersions = async (
     req: FastifyRequest,
     reply: FastifyReply<ServerResponse>
-): Promise<Typings.ProjectVersions> => await fetchProjectVersions();
+): Promise<Typings.ProjectVersions> => await v3Services.fetchProjectVersions();
 
 export const getTeamList = async (
     req: FastifyRequest,
     reply: FastifyReply<ServerResponse>
-): Promise<Typings.TeamList> => await fetchDiscordClientUser({ req: req });
+): Promise<Typings.TeamList> => await v3Services.fetchClientUser({ req: req });

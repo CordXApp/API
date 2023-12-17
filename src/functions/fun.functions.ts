@@ -1,10 +1,17 @@
+import { boomify } from "boom";
+
 const responses = require('../json/8ball.json')
 
-async function generate8BallRes() {
+export const generate8BallRes = async (): Promise<any> => {
 
     const response = await responses[Math.floor(Math.random() * responses.length)];
 
     return response;
 }
 
-export default generate8BallRes;
+export const generateAdvice = async (): Promise<any> => {
+
+    const response = await fetch('https://api.adviceslip.com/advice')
+
+    return response.json();
+}
