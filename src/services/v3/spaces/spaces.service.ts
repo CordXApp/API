@@ -1,11 +1,11 @@
 import boom from "boom";
-import * as Typings from "../../@types/users"
-import sqlQuery from "../../clients/mysql.client";
-import { getUserBucketSize } from "../../middleware/spaces";
-import { getUserImage } from "../../middleware/spaces";
-import formatSizeUnits from "../../utils/formatSizeUnits";
-import { fetchV3DiscordUser } from "../discord/user.service";
-import { FileTypes } from '../../@types/spaces'
+import * as Typings from "../../../@types/v3/users"
+import sqlQuery from "../../../clients/mysql.client";
+import { getUserBucketSize } from "../../../middleware/spaces";
+import { getUserImage } from "../../../middleware/spaces";
+import formatSizeUnits from "../../../utils/formatSizeUnits";
+import { fetchDiscordUser } from "../discord/user.service";
+import { FileTypes } from '../../../@types/v3/spaces'
 
 //import { QueryResponse } from 'serverless-mysql';
 
@@ -32,7 +32,7 @@ export const fetchUserBucket = async ({ req, res }): Promise<Typings.UserStats> 
 
         return {
             id: `${userId}`,
-            username: `${(await fetchV3DiscordUser({ id: userId })).global_name}`,
+            username: `${(await fetchDiscordUser({ id: userId })).global_name}`,
             storage: {
                 used: size,
                 remains: 'Unlimited',
@@ -90,7 +90,7 @@ export const fetchUserImage = async ({ req, res }): Promise<any> => {
 
     return {
         file: {
-            owner: (await fetchV3DiscordUser({ id: userId })).global_name,
+            owner: (await fetchDiscordUser({ id: userId })).global_name,
             info: {
                 id: data[0].fileid,
                 type: custom ? custom : file_type,

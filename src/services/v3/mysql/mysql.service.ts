@@ -1,6 +1,6 @@
 import boom from "boom";
 import sqlQuery from '../../../clients/mysql.client';
-import { WebsiteStats } from '../../../@types/sys'
+import { WebsiteStats } from '../../../@types/v3/sys'
 
 /**
  * GENERATE WEBSITE STATS FROM DATABASE

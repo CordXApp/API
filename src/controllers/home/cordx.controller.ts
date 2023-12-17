@@ -11,6 +11,7 @@ export const homePage = async (
         return reply.status(200).send({
             statusCode: 200,
             message: "Welcome to the CordX API, please refer to the documentation for more information.",
+            documentation: 'https://docs.cordx.lol',
             version: `v${version}`
         });
 

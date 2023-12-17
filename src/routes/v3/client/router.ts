@@ -1,16 +1,22 @@
 import * as handler from '../../../handlers/v3/fun.handler';
-import { get8BallHandler } from '../../../handlers/v3/fun.handler';
-import * as controller from '../../../controllers/v3/client/client.controller';
+import { v3Controllers } from '../../../controllers/v3/base.controller';
 import { RouterTypes } from "../../../@types/base";
 
 const get8BallResponse: RouterTypes = {
     method: "GET",
     url: "/v3/client/8ball/:q",
-    handler: controller.get8BallResponse,
+    handler: v3Controllers.get8BallResponse,
     preHandler: handler.get8BallHandler,
 };
 
+const getAdvice: RouterTypes = {
+    method: "GET",
+    url: "/v3/client/advice",
+    handler: v3Controllers.getAdvice
+};
+
 const clientRoutes: any[] = [
+    getAdvice,
     get8BallResponse
 ];
 

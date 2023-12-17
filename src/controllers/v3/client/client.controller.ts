@@ -1,8 +1,13 @@
 import { ServerResponse } from "http";
 import { FastifyReply, FastifyRequest } from "fastify";
-import { fetch8BallResponse } from '../../../services/discord/fun.service';
+import v3Services from "../../../services/v3/base.service";
 
 export const get8BallResponse = async (
     req: FastifyRequest,
     reply: FastifyReply<ServerResponse>
-): Promise<any> => await fetch8BallResponse();
+): Promise<any> => await v3Services.fetch8BallResponse();
+
+export const getAdvice = async (
+    req: FastifyRequest,
+    reply: FastifyReply<ServerResponse>
+): Promise<any> => await v3Services.fetchAdvice();
