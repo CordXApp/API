@@ -37,12 +37,16 @@
     "@fastify/rate-limit": "6.0.1",
     "axios": "^1.4.0",
     "boom": "^7.3.0",
+    "cookie": "^0.6.0",
+    "cryptr": "^6.3.0",
+    "dayjs": "^1.11.10",
     "discord.js": "^14.12.1",
     "dotenv": "^8.2.0",
     "fastify": "^2.15.3",
     "fastify-oas": "^2.7.0",
     "fastify-simple-form": "1.0.6",
     "fastify-swagger": "^2.5.0",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.2",
     "nodemon": "^3.0.2",
     "server-health": "^5.2.0"
@@ -84,10 +88,9 @@
       }
     ],
     "plugins": [
+      "@semantic-release/github",
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
-      "@semantic-release/npm",
-      "@semantic-release/github",
       [
         "@semantic-release/git",
         {

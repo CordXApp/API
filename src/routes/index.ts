@@ -1,5 +1,5 @@
 import home from "./base/router";
-import v3Routes from "./v3/root";
+import v3Routes from "./root";
 
 /**
  * PLACE ALL ROUTES HERE
