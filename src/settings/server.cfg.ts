@@ -13,7 +13,7 @@ const env: any = {
   },
   DISCORD: {
     API_KEY: process.env.DISCORD_API_KEY,
-    API_URL: 'https://discord.com/api/v9/',
+    PROXY: process.env.DISCORD_PROXY_URL,
   },
   DATABASES: {
     MONGO: process.env.MONGO_URI,
