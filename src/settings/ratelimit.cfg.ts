@@ -5,15 +5,15 @@ import env from './server.cfg';
 
 export const RatelimitOptions = {
     max: 10,
-    ban: 10,
-    global: false,
-    timeWindow: 1000,
+    ban: 30,
+    global: true,
+    timeWindow: 5000,
     hook: 'preHandler',
-    nameSpace: 'cordx-ratelimit',
+    nameSpace: 'x-cordx-ratelimit',
     cache: 5000,
     //redis: redis,
-    continueExceeding: false,
     skipOnError: false,
+    continueExceeding: false,
     addHeadersOnExceeding: {
         'x-ratelimit-limit': true,
         'x-ratelimit-remaining': true,

@@ -44,9 +44,6 @@
     "dotenv": "^8.2.0",
     "fastify": "^2.15.3",
     "fastify-oas": "^2.7.0",
-    "fastify-simple-form": "1.0.6",
-    "fastify-swagger": "^2.5.0",
-    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.2",
     "nodemon": "^3.0.2"
   },

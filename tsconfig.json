@@ -17,35 +17,6 @@
     "sourceMap": true,
     "outDir": "dist",
     "baseUrl": ".",
-    "paths": {
-      "*": [
-        "node_modules/*"
-      ],
-      "root/*": [
-        "src/*"
-      ],
-      "clients": [
-        "src/clients/*"
-      ],
-      "configs/*": [
-        "src/settings/*"
-      ],
-      "controllers/*": [
-        "src/controllers/*"
-      ],
-      "routes": [
-        "src/routes/*"
-      ],
-      "services/*": [
-        "src/services/*"
-      ],
-      "typings/*": [
-        "src/@types/*"
-      ],
-      "models/*": [
-        "src/models/*"
-      ]
-    },
     "noImplicitAny": false,
     "lib": [
       "es6"
