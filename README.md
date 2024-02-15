@@ -1,13 +1,23 @@
 # CordX API
-Official restful api for the CordX Services.
+
+Welcome to the official RESTful API for CordX Services. This API powers the various services offered by CordX and is designed for both internal and external use.
 
 [![Semantic Release CI](https://github.com/CordXApp/API/actions/workflows/release.yml/badge.svg?branch=master)](https://github.com/CordXApp/API/actions/workflows/release.yml)
 
 ---
 
-## API Usage 
-- [Internal Docs](https://api.cordx.lol/internal)
-- [External Docs](https://help.cordx.lol/devs)
+## Documentation
+
+For detailed information on how to use this API, please refer to our documentation:
+
+- [Internal API Documentation](https://api.cordx.lol/internal)
+- [External API Documentation](https://help.cordx.lol/devs)
+
+---
+
+## Contributing
+
+We welcome contributions of all kinds. Whether you're improving our code, adding new features, or even fixing typos, we appreciate your help!
 
 ---
 
@@ -33,3 +43,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+---
+
+## License
+
+This project is licensed under the [GNU Affero General Public License](LICENSE). Please see the [license file](LICENSE) for more information.
