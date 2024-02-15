@@ -1,7 +1,7 @@
 import { ServerResponse } from "http";
 import { FastifyReply, FastifyRequest } from "fastify";
-import v3Services from "../../../services/base.service";
-import * as Typings from '../../../@types/v3/sys'
+import v3Services from "../../services/base.service";
+import * as Typings from '../../@types/v3/sys'
 
 export const getWebStats = async (
     req: FastifyRequest,

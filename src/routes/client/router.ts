@@ -1,5 +1,5 @@
 import * as handler from '../../handlers/fun.handler';
-import { v3Controllers } from '../../controllers/v3/base.controller';
+import { v3Controllers } from '../../controllers/base.controller';
 import { RouterTypes } from "../../@types/base";
 
 const get8BallResponse: RouterTypes = {

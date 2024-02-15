@@ -1,6 +1,6 @@
 import { ServerResponse } from "http";
 import { FastifyReply, FastifyRequest } from "fastify";
-import v3Services from "../../../services/base.service";
+import v3Services from "../../services/base.service";
 
 export const get8BallResponse = async (
     req: FastifyRequest,

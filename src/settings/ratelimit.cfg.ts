@@ -1,7 +1,7 @@
 import Redis from 'ioredis';
 import env from './server.cfg';
 
-export const redis = new Redis(env.DATABASES.REDIS);
+//export const redis = new Redis(env.DATABASES.REDIS);
 
 export const RatelimitOptions = {
     max: 10,
@@ -11,7 +11,7 @@ export const RatelimitOptions = {
     hook: 'preHandler',
     nameSpace: 'cordx-ratelimit',
     cache: 5000,
-    redis: redis,
+    //redis: redis,
     continueExceeding: false,
     skipOnError: false,
     addHeadersOnExceeding: {

@@ -1,5 +1,5 @@
 import { RouterTypes } from '../../@types/base';
-import { v3Controllers } from '../../controllers/v3/base.controller';
+import { v3Controllers } from '../../controllers/base.controller';
 import systemDocs from '../../docs/system/index';
 
 const getWebsiteStats: RouterTypes = {

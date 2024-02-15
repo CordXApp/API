@@ -1,13 +1,35 @@
-import mongoose from 'mongoose';
+import { Schema, model } from 'mongoose';
+import { UserDomainSchema } from './dom.schema';
+import { UserSignatureSchema } from './sig.schema';
 
-const CordXUserSchema = new mongoose.Schema({
+const CordXUserSchema: Schema = new Schema({
     id: {
         type: Number,
-        required: true,
+        required: true
+    },
+    userId: {
+        type: String,
+        required: true
+    },
+    avatar: {
+        type: String,
+        required: true
+    },
+    banner: {
+        type: String,
+        required: false
+    },
+    username: {
+        type: String,
+        required: true
+    },
+    globalName: {
+        type: String,
+        required: true
     },
     owner: {
         type: Boolean,
-        required: true,
+        required: false,
         default: false
     },
     admin: {
@@ -20,6 +42,16 @@ const CordXUserSchema = new mongoose.Schema({
         required: false,
         default: false
     },
+    support: {
+        type: Boolean,
+        required: false,
+        default: false
+    },
+    banned: {
+        type: Boolean,
+        required: false,
+        default: false
+    },
     verified: {
         type: Boolean,
         required: false,
@@ -28,8 +60,23 @@ const CordXUserSchema = new mongoose.Schema({
     beta: {
         type: Boolean,
         required: false,
-        default: true
+        default: false
+    },
+    active_domain: {
+        type: String,
+        required: false,
+        default: 'none'
+    },
+    domains: {
+        type: [UserDomainSchema],
+        required: false,
+        default: []
+    },
+    signature: {
+        type: UserSignatureSchema,
+        required: false,
+        default: null
     }
-});
+})
 
-export default mongoose.model('cordxUser', CordXUserSchema)
+export default model('cordxUser', CordXUserSchema)

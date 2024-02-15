@@ -1,5 +1,5 @@
 import { ServerResponse, get } from "http";
-import env from '../../settings/server.cfg';
+import env from '../settings/server.cfg';
 import { FastifyReply, FastifyRequest } from "fastify";
 
 export const getDiscordUser = async (

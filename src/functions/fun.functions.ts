@@ -1,16 +1,8 @@
-const responses = require('../json/8ball.json')
-import { catFacts } from "../json/facts/cats";
+const responses = require('../handlers/json/8ball.json')
 
 export const generate8BallRes = async (): Promise<any> => {
 
     const response = await responses[Math.floor(Math.random() * responses.length)];
-
-    return response;
-}
-
-export const generateCatFact = async (): Promise<any> => {
-
-    const response = await catFacts[Math.floor(Math.random() * catFacts.length)];
 
     return response;
 }

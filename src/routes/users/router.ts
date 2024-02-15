@@ -1,6 +1,6 @@
 import { RouteOptions } from "fastify";
-import * as handler from '../../handlers/v3/user.handler';
-import { v3Controllers } from '../../controllers/v3/base.controller';
+import * as handler from '../../handlers/user.handler';
+import { v3Controllers } from '../../controllers/base.controller';
 import userDocs from '../../docs/users/index';
 import { RouterTypes } from "../../@types/base";
 

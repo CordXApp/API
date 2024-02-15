@@ -7,8 +7,6 @@ import formatSizeUnits from "../../utils/formatSizeUnits";
 import { fetchDiscordUser } from "../discord/user.service";
 import { FileTypes } from '../../@types/v3/spaces'
 
-//import { QueryResponse } from 'serverless-mysql';
-
 export const fetchUserBucket = async ({ req, res }): Promise<Typings.UserStats> => {
 
     res.header('Content-Type', 'application/json');
@@ -18,7 +16,6 @@ export const fetchUserBucket = async ({ req, res }): Promise<Typings.UserStats> 
     if (!userId) throw boom.badRequest('Invalid user id');
 
     return await getUserBucketSize({ user: userId }).then(async (b: any) => {
-
         const images: any = await sqlQuery(`SELECT * FROM images WHERE userid=?`, [userId]).then((res) => res);
         const downloads: any = await sqlQuery(`SELECT * FROM downloads WHERE user=?`, [userId]).then((res) => res);
 
@@ -55,6 +52,8 @@ export const fetchUserBucket = async ({ req, res }): Promise<Typings.UserStats> 
             }
         }
     }).catch((err: any) => {
+
+        console.error(err.stack)
 
         throw boom.internal(err, { statusCode: 500 });
     });
@@ -95,7 +94,7 @@ export const fetchUserImage = async ({ req, res }): Promise<any> => {
                 id: data[0].fileid,
                 type: custom ? custom : file_type,
                 name: data[0].filename,
-                url: `https://beta.cordx.lol/api/user/${userId}/${data[0].filename}`,
+                url: `https://cordx.lol/api/user/${userId}/${data[0].filename}`,
             },
             stats: {
                 key: image.data[0].Key,

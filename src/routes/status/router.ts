@@ -1,6 +1,6 @@
-import { v3Controllers } from '../../../controllers/v3/base.controller';
-import userDocs from '../../../docs/users/index';
-import { RouterTypes } from "../../../@types/base";
+import { v3Controllers } from '../../controllers/base.controller';
+import userDocs from '../../docs/users/index';
+import { RouterTypes } from "../../@types/base";
 
 const statusCompFilter: RouterTypes = {
     method: "GET",

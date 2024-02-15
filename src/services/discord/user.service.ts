@@ -5,7 +5,9 @@ import snowflakeToTimestamp from "../../utils/convertSnowflake";
 
 export const fetchDiscordUser = async ({ id }): Promise<DiscordUser> => {
 
-    let response = await fetch(env.DISCORD.API_URL + `users/${id}`, {
+    console.log(id)
+
+    let response = await fetch('https://discord.com/api/v10/' + `users/${id}`, {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bot ${env.DISCORD.API_KEY}`

@@ -1,7 +1,7 @@
 import { ServerResponse } from "http";
 import { FastifyReply, FastifyRequest } from "fastify";
-import v3Services from "../../../services/base.service";
-import { userStates, DiscordUser, UserStats } from "../../../@types/v3/users";
+import v3Services from "../../services/base.service";
+import { userStates, DiscordUser, UserStats } from "../../@types/v3/users";
 
 export const getUserStates = async (
     req: FastifyRequest,

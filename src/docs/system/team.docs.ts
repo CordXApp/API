@@ -3,7 +3,7 @@ import * as BaseTypes from '../../@types/base';
 export const team: BaseTypes.Swagger = {
     summary: 'Fetch a list of our team members',
     description: 'Returns a list of our team members and their basic info/roles',
-    tags: ['Users'],
+    tags: ['System'],
     response: {
         200: {
             description: 'Successful request/response',

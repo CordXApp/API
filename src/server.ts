@@ -3,7 +3,9 @@ require("dotenv").config();
 import fastify from "fastify";
 import env from "./settings/server.cfg";
 import dbConnect from "./clients/mongo.client";
+import { SpacesClient } from "./utils/spacesClient";
 import simpleForm from "fastify-simple-form";
+import packageJSON from "../package.json";
 import routes from "./routes";
 
 /**
@@ -31,6 +33,8 @@ export async function server({ client }) {
 
         //@ts-expect-error
         req.client = client;
+        //@ts-expect-error
+        req.spaces = new SpacesClient();
 
         res.header('Access-Control-Allow-Origin', '*')
         res.header('Access-Control-Allow-Headers', '*')
@@ -50,7 +54,7 @@ export async function server({ client }) {
 
     app.setErrorHandler(async function (error, request, reply) {
 
-        await console.log(error.stack)
+        console.log(error.stack?.toString() || error.message);
 
         if (error.validation) {
             return reply.code(400).send({
@@ -63,7 +67,7 @@ export async function server({ client }) {
         return reply.code(500).send({
             statusCode: 500,
             error: "Internal Server Error",
-            message: error.message
+            message: error.message,
         })
     });
 
@@ -76,23 +80,20 @@ export async function server({ client }) {
 
     const start = async (): Promise<void> => {
 
-        try {
-
-            await app.listen({
-                port: env.APP.PORT,
-                host: '0.0.0.0'
-            });
-
-            app.log.info('Server listening on port %s', env.APP.PORT);
-
-            await dbConnect()
-                .then(() => app.log.info('MongoDB connected successfully'))
-                .catch(err => app.log.error(err.stack));
-
-        } catch (err: any) {
-
-            return app.log.error(err.stack);
-        }
+        app.listen({
+            host: '0.0.0.0',
+            port: env.APP.PORT
+        }).then(() => {
+            dbConnect().then(() => {
+                console.log(`Database connection established successfully!`);
+            }).catch((err: Error) => {
+                console.error(err.stack ? err.stack : err.message);
+                process.exit(1);
+            })
+        }).catch((err: Error) => {
+            console.error(err.stack ? err.stack : err.message);
+            process.exit(1);
+        })
     }
 
     start();

@@ -1,7 +1,7 @@
 import { ServerResponse } from "http";
 import { FastifyReply, FastifyRequest } from "fastify";
-import v3Services from "../../../services/base.service";
-import * as Typings from '../../../@types/v3/status'
+import v3Services from "../../services/base.service";
+import * as Typings from '../../@types/v3/status'
 
 export const statusCompFilter = async (
     req: FastifyRequest,
